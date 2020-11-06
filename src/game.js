@@ -13,7 +13,7 @@ class Game {
       ninth : ''
     }
 
-    var board = this.gameBoard;
+    // var board = this.gameBoard;
     this.players = [];
     this.turnPlayer;
     this.nonTurnPlayer;
@@ -35,9 +35,8 @@ class Game {
 
   setupGame() {
     this.generatePlayers();
-    this.players[0].turn = true;    
-    // this.turnPlayer = this.players[0];
-    // this.nonTurnPlayer = this.players[1];  
+    this.players[0].turn = true;
+    this.assignTurnPlayer(); 
   }
 
   alternateTurns() {
@@ -74,7 +73,8 @@ class Game {
     // var firstColumn = board.1 !== '' && board.1 === board.4 && board.1 === board.7;
     // var secondColumn = board.2 !== '' && board.2 === board.5 && board.2 === board.8;
     // var thirdColumn = board.3 !== '' && board.3 === board.6 && board.3 === board.9;
-    console.log(board);
+
+    var board = this.gameBoard;    
     
     if (board.first !== '' && board.first === board.fourth && board.first === board.seventh) {
       this.decideWinner(board.first);
@@ -86,6 +86,7 @@ class Game {
   }
 
   checkForHorizontalWin() {
+    var board = this.gameBoard;
     if (board.first !== '' && board.first === board.second && board.first === board.third) {
       this.decideWinner(board.first);
     } else if (board.fourth !== '' && board.fourth === board.fifth && board.fourth === board.sixth) {
@@ -95,7 +96,8 @@ class Game {
     }
   }
 
-  checkForDiagonalWin() {    
+  checkForDiagonalWin() {
+    var board = this.gameBoard;    
     if (board.first !== '' && board.first === board.fifth && board.first === board.ninth) {
       this.decideWinner(board.first);
     } else if (board.third !== '' && board.third === board.fifth && board.third === board.seventh) {
@@ -106,26 +108,21 @@ class Game {
   checkForDraw() {
     // if all 9 spots are filled AND neither player has won
     // set this.result = draw
-  }
-
-  checkColumn(boardSlot) {
-    // make column check
-    // return column 
-  }
+  }  
 
   decideWinner(boardSlot) {
     // boardSlot is the value of the selected slot, which will be one of the tokens
     if (boardSlot === player1.token) {
-      this.winningPlayer = player1;
-      this.result = 'Player 1 Wins!';
+      this.winningPlayer = this.turnPlayer;
+      // this.result = 'Player 1 Wins!'; interpolate from turnPlayer
     } else {
       this.winningPlayer = player2;
       this.result = 'Player 2 Wins!';
     }
   }
 
-  fillSquare(boardSlot, turnPlayer, nonTurnPlayer) {
-    this.gameBoard.boardSlot = this.turnPlayer.token;
+  fillSquare(boardSlot) {
+    this.gameBoard[boardSlot] = this.turnPlayer.token;
     this.checkForGameEnd();
     this.alternateTurns();
   }
