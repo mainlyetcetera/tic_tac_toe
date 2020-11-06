@@ -11,8 +11,9 @@ class Game {
       7 : '',
       8 : '',
       9 : ''
-    } // maybe these should all be arrays, or maybe it should be one array
-    
+    }
+
+    var board = this.gameBoard;    
     this.players = [];
     this.turnPlayer = player1.turn || player2.turn;
     this.result;
@@ -51,14 +52,35 @@ class Game {
     // check the numbers to be filled with the same token
     // if they are
       // set this.result = turnPlayer wins
+    // var firstColumn = board.1 !== '' && board.1 === board.4 && board.1 === board.7;
+    // var secondColumn = board.2 !== '' && board.2 === board.5 && board.2 === board.8;
+    // var thirdColumn = board.3 !== '' && board.3 === board.6 && board.3 === board.9;
+    
+    if (board.1 !== '' && board.1 === board.4 && board.1 === board.7) {
+      this.decideWinner(board.1);
+    } else if (board.2 !== '' && board.2 === board.5 && board.2 === board.8) {
+      this.decideWinner(board.2);
+    } else if (board.3 !== '' && board.3 === board.6 && board.3 === board.9) {
+      this.decideWinner(board.3);
+    }
   }
 
   checkForHorizontalWin() {
-  
+    if (board.1 !== '' && board.1 === board.2 && board.1 === board.3) {
+      this.decideWinner(board.1);
+    } else if (board.4 !== '' && board.4 === board.5 && board.4 === board.6) {
+      this.decideWinner(board.4);
+    } else if (board.7 !== '' && board.7 === board.8 && board.7 === board.9) {
+      this.decideWinner(board.7);
+    }
   }
 
-  checkForDiagonalWin() {
-  
+  checkForDiagonalWin() {    
+    if (board.1 !== '' && board.1 === board.5 && board.1 === board.9) {
+      this.decideWinner(board.1);
+    } else if (board.3 !== '' && board.3 === board.5 && board.3 === board.7) {
+      this.decideWinner(board.3);
+    }
   }
 
   checkForDraw() {
@@ -66,8 +88,25 @@ class Game {
     // set this.result = draw
   }
 
-  fillSquare(turnPlayer) {
+  checkColumn(boardSlot) {
+    // make column check
+    // return column 
+  }
+
+  decideWinner(boardSlot) {
+    // boardSlot is the value of the selected slot, which will be one of the tokens
+    if (boardSlot === player1.token) {
+      this.winningPlayer = player1;
+      this.result = 'Player 1 Wins!';
+    } else {
+      this.winningPlayer = player2;
+      this.result = 'Player 2 Wins!';
+    }
+  }
+
+  fillSquare(square, turnPlayer) {
     // fill clicked square with player's token, player being turn player
+    this.gameBoard.square = turnPlayer.token;
     this.checkForGameEnd();
   }
 
