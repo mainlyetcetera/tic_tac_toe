@@ -1,29 +1,30 @@
 class Game {
-  constructor() {
+  constructor(test) {
     this.id = Date.now();
     this.gameBoard = {
-      1 : '',
-      2 : '',
-      3 : '',
-      4 : '',
-      5 : '',
-      6 : '',
-      7 : '',
-      8 : '',
-      9 : ''
+      first : '',
+      second : '',
+      third : '',
+      fourth : '',
+      fifth : '',
+      sixth : '',
+      seventh : '',
+      eighth : '',
+      ninth : ''
     }
 
-    var board = this.gameBoard;    
+    var board = this.gameBoard;
     this.players = [];
-    this.turnPlayer = player1.turn || player2.turn;
+    this.turnPlayer;
     this.result;
     this.winningPlayer;
-    this.tokens = [token1, token2]; // these I need to get from assets
+    this.tokens = ['token1', 'token2']; // these I need to get from assets
   }
 
   generatePlayers() {
-    var player1 = new Player(1, token1);
-    var player2 = new Player(2, token2);
+    var player1 = new Player(1, 'token1');
+    var player2 = new Player(2, 'token2');
+    player2.id += 1;
     this.addPlayers(player1, player2);
   }
 
@@ -55,31 +56,32 @@ class Game {
     // var firstColumn = board.1 !== '' && board.1 === board.4 && board.1 === board.7;
     // var secondColumn = board.2 !== '' && board.2 === board.5 && board.2 === board.8;
     // var thirdColumn = board.3 !== '' && board.3 === board.6 && board.3 === board.9;
+    console.log(board);
     
-    if (board.1 !== '' && board.1 === board.4 && board.1 === board.7) {
-      this.decideWinner(board.1);
-    } else if (board.2 !== '' && board.2 === board.5 && board.2 === board.8) {
-      this.decideWinner(board.2);
-    } else if (board.3 !== '' && board.3 === board.6 && board.3 === board.9) {
-      this.decideWinner(board.3);
+    if (board.first !== '' && board.first === board.fourth && board.first === board.seventh) {
+      this.decideWinner(board.first);
+    } else if (board.second !== '' && board.second === board.fifth && board.second === board.eighth) {
+      this.decideWinner(board.second);
+    } else if (board.third !== '' && board.third === board.sixth && board.third === board.ninth) {
+      this.decideWinner(board.third);
     }
   }
 
   checkForHorizontalWin() {
-    if (board.1 !== '' && board.1 === board.2 && board.1 === board.3) {
-      this.decideWinner(board.1);
-    } else if (board.4 !== '' && board.4 === board.5 && board.4 === board.6) {
-      this.decideWinner(board.4);
-    } else if (board.7 !== '' && board.7 === board.8 && board.7 === board.9) {
-      this.decideWinner(board.7);
+    if (board.first !== '' && board.first === board.second && board.first === board.third) {
+      this.decideWinner(board.first);
+    } else if (board.fourth !== '' && board.fourth === board.fifth && board.fourth === board.sixth) {
+      this.decideWinner(board.fourth);
+    } else if (board.seventh !== '' && board.seventh === board.eighth && board.seventh === board.ninth) {
+      this.decideWinner(board.seventh);
     }
   }
 
   checkForDiagonalWin() {    
-    if (board.1 !== '' && board.1 === board.5 && board.1 === board.9) {
-      this.decideWinner(board.1);
-    } else if (board.3 !== '' && board.3 === board.5 && board.3 === board.7) {
-      this.decideWinner(board.3);
+    if (board.first !== '' && board.first === board.fifth && board.first === board.ninth) {
+      this.decideWinner(board.first);
+    } else if (board.third !== '' && board.third === board.fifth && board.third === board.seventh) {
+      this.decideWinner(board.third);
     }
   }
 
