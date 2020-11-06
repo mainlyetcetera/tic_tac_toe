@@ -16,6 +16,7 @@ class Game {
     var board = this.gameBoard;
     this.players = [];
     this.turnPlayer;
+    this.nonTurnPlayer;
     this.result;
     this.winningPlayer;
     this.tokens = ['token1', 'token2']; // these I need to get from assets
@@ -32,14 +33,31 @@ class Game {
     this.players.push(player1, player2);
   }
 
-  startGame() {
+  setupGame() {
     this.generatePlayers();
-    player1.turn = true;
+    this.players[0].turn = true;    
+    // this.turnPlayer = this.players[0];
+    // this.nonTurnPlayer = this.players[1];  
   }
 
-  alternateTurns(turnPlayer, nonTurnPlayer) {
-    turnPlayer.turn = false;
-    nonTurnPlayer.turn = true;
+  alternateTurns() {
+    this.adjustTurnData();
+    this.assignTurnPlayer();
+  }
+
+  adjustTurnData() {
+    this.turnPlayer.turn = false;
+    this.nonTurnPlayer.turn = true;
+  }
+
+  assignTurnPlayer() {
+    if (this.players[0].turn) {
+      this.turnPlayer = this.players[0];
+      this.nonTurnPlayer = this.players[1];
+    } else {
+      this.turnPlayer = this.players[1];
+      this.nonTurnPlayer = this.players[0];
+    }
   }
 
   checkForGameEnd() {
@@ -106,10 +124,10 @@ class Game {
     }
   }
 
-  fillSquare(square, turnPlayer) {
-    // fill clicked square with player's token, player being turn player
-    this.gameBoard.square = turnPlayer.token;
+  fillSquare(boardSlot, turnPlayer, nonTurnPlayer) {
+    this.gameBoard.boardSlot = this.turnPlayer.token;
     this.checkForGameEnd();
+    this.alternateTurns();
   }
 
   saveWinningGameBoard(player) {
