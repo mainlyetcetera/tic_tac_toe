@@ -101,9 +101,11 @@ class Game {
     }
   }
 
-  checkForDraw() {
-    // if all 9 spots are filled AND neither player has won
-    // set this.result = draw
+  checkForDraw() {    
+    if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
+      this.result = 'This game is a draw!'
+      console.log(this.result);
+    }
   }
 
   decideWinner() {
