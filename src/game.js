@@ -1,5 +1,5 @@
 class Game {
-  constructor(test) {
+  constructor() {
     this.id = Date.now();
     this.gameBoard = {
       first : '',
@@ -11,9 +11,8 @@ class Game {
       seventh : '',
       eighth : '',
       ninth : ''
-    }
+    }    
 
-    // var board = this.gameBoard;
     this.players = [];
     this.turnPlayer;
     this.nonTurnPlayer;
@@ -36,7 +35,7 @@ class Game {
   setupGame() {
     this.generatePlayers();
     this.players[0].turn = true;
-    this.assignTurnPlayer(); 
+    this.assignTurnPlayer();
   }
 
   alternateTurns() {
@@ -45,8 +44,8 @@ class Game {
   }
 
   adjustTurnData() {
-    this.turnPlayer.turn = false;
-    this.nonTurnPlayer.turn = true;
+    this.turnPlayer.takeTurn();
+    this.nonTurnPlayer.takeTurn();
   }
 
   assignTurnPlayer() {
@@ -57,68 +56,61 @@ class Game {
       this.turnPlayer = this.players[1];
       this.nonTurnPlayer = this.players[0];
     }
+
+    // iterate over players
+    // whichever player's turn is set to true
+      // assign as turn player
+      // assign other as non-turn player
   }
 
   checkForGameEnd() {
     this.checkForDraw();
     this.checkForVerticalWin();
     this.checkForHorizontalWin();
-    this.checkForDiagonalWin();    
+    this.checkForDiagonalWin();
   }
 
   checkForVerticalWin() {
-    // check the numbers to be filled with the same token
-    // if they are
-      // set this.result = turnPlayer wins
-    // var firstColumn = board.1 !== '' && board.1 === board.4 && board.1 === board.7;
-    // var secondColumn = board.2 !== '' && board.2 === board.5 && board.2 === board.8;
-    // var thirdColumn = board.3 !== '' && board.3 === board.6 && board.3 === board.9;
-
-    var board = this.gameBoard;    
-    
+    var board = this.gameBoard;
     if (board.first !== '' && board.first === board.fourth && board.first === board.seventh) {
-      this.decideWinner(board.first);
+      this.decideWinner();
     } else if (board.second !== '' && board.second === board.fifth && board.second === board.eighth) {
-      this.decideWinner(board.second);
+      this.decideWinner();
     } else if (board.third !== '' && board.third === board.sixth && board.third === board.ninth) {
-      this.decideWinner(board.third);
+      this.decideWinner();
     }
   }
 
   checkForHorizontalWin() {
     var board = this.gameBoard;
     if (board.first !== '' && board.first === board.second && board.first === board.third) {
-      this.decideWinner(board.first);
+      this.decideWinner();
     } else if (board.fourth !== '' && board.fourth === board.fifth && board.fourth === board.sixth) {
-      this.decideWinner(board.fourth);
+      this.decideWinner();
     } else if (board.seventh !== '' && board.seventh === board.eighth && board.seventh === board.ninth) {
-      this.decideWinner(board.seventh);
+      this.decideWinner();
     }
   }
 
   checkForDiagonalWin() {
-    var board = this.gameBoard;    
+    var board = this.gameBoard;
     if (board.first !== '' && board.first === board.fifth && board.first === board.ninth) {
-      this.decideWinner(board.first);
+      this.decideWinner();
     } else if (board.third !== '' && board.third === board.fifth && board.third === board.seventh) {
-      this.decideWinner(board.third);
+      this.decideWinner();
     }
   }
 
   checkForDraw() {
     // if all 9 spots are filled AND neither player has won
     // set this.result = draw
-  }  
+  }
 
-  decideWinner(boardSlot) {
-    // boardSlot is the value of the selected slot, which will be one of the tokens
-    if (boardSlot === player1.token) {
-      this.winningPlayer = this.turnPlayer;
-      // this.result = 'Player 1 Wins!'; interpolate from turnPlayer
-    } else {
-      this.winningPlayer = player2;
-      this.result = 'Player 2 Wins!';
-    }
+  decideWinner() {
+    this.winningPlayer = this.turnPlayer;
+    this.result = `Player ${this.winningPlayer.playerNumber} has won!}`;    
+    this.saveWinningGameBoard(this.winningPlayer);
+    console.log(this.winningPlayer, this.result);
   }
 
   fillSquare(boardSlot) {
@@ -129,11 +121,12 @@ class Game {
 
   saveWinningGameBoard(player) {
     player.wins.push(this.gameBoard);
+    player.winCount++;
   }
-  
+
 }
 
-/* win conditions 
+/* win conditions
     1 2 3
     4 5 6
     7 8 9
@@ -150,5 +143,8 @@ class Game {
 
     diagonally:
     159
-    357    
+    357
+
+    game board class?
+    the actual boards seen as wins
 */
