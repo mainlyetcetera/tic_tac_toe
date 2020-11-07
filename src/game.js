@@ -126,6 +126,12 @@ class Game {
     player.winCount++;
   }
 
+  resetBoard() {
+    for (var boardSlot in this.gameBoard) {
+      this.gameBoard[boardSlot] = '';
+    }
+  }
+
 }
 
 /* win conditions
