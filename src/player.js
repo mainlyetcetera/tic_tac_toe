@@ -15,4 +15,8 @@ class Player {
   retrieveWinsFromStorage() {
 
   }
+
+  takeTurn() {
+    this.turn = !this.turn;
+  }
 }
