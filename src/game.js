@@ -51,18 +51,12 @@ class Game {
   }
 
   assignTurnPlayer() {
-    if (this.players[0].turn) {
-      this.turnPlayer = this.players[0];
-      this.nonTurnPlayer = this.players[1];
-    } else {
-      this.turnPlayer = this.players[1];
-      this.nonTurnPlayer = this.players[0];
+    for (var i = 0; i < this.players.length; i++) {
+      if (this.players[i].turn) {
+        this.turnPlayer = this.players[i];
+        this.nonTurnPlayer = this.players[i + 1] || this.players[i - 1];
+      }
     }
-
-    // iterate over players
-    // whichever player's turn is set to true
-      // assign as turn player
-      // assign other as non-turn player
   }
 
   checkForGameEnd() {
