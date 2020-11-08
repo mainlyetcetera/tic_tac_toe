@@ -50,4 +50,10 @@ body {
   margin-bottom: 8%;
   height: 65%;
   width: 75%;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.4%;
+}
+
+.game-board div {
+  border: solid black;
 }
