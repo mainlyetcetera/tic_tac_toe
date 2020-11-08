@@ -2,15 +2,15 @@ class Game {
   constructor(players) {
     this.id = Date.now();
     this.gameBoard = {
-      's1' : '',
-      's2' : '',
-      's3' : '',
-      's4' : '',
-      's5' : '',
-      's6' : '',
-      's7' : '',
-      's8' : '',
-      's9' : ''
+      s1 : '',
+      s2 : '',
+      s3 : '',
+      s4 : '',
+      s5 : '',
+      s6 : '',
+      s7 : '',
+      s8 : '',
+      s9 : ''
     }
 
     this.players = players || [];
@@ -79,13 +79,10 @@ class Game {
   checkForVerticalWin() {
     var board = this.gameBoard;
     if (board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7) {
-      console.log("vert");
       this.decideWinner();
     } else if (board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8) {
-      console.log("vert");
       this.decideWinner();
     } else if (board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9) {
-      console.log("vert");
       this.decideWinner();
     }
   }
@@ -93,13 +90,10 @@ class Game {
   checkForHorizontalWin() {
     var board = this.gameBoard;
     if (board.s1 !== '' && board.s1 === board.s2 && board.s1 === board.s3) {
-      console.log("horiz");
       this.decideWinner();
     } else if (board.s4 !== '' && board.s4 === board.s5 && board.s4 === board.s6) {
-      console.log("horiz");
       this.decideWinner();
     } else if (board.s7 !== '' && board.s7 === board.s8 && board.s7 === board.s9) {
-      console.log("horiz");
       this.decideWinner();
     }
   }
@@ -107,10 +101,8 @@ class Game {
   checkForDiagonalWin() {
     var board = this.gameBoard;
     if (board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9) {
-      console.log("diagonal");
       this.decideWinner();
     } else if (board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7) {
-      console.log("diagonal");
       this.decideWinner();
     }
   }
@@ -132,10 +124,6 @@ class Game {
   fillSquare(boardSlot) {
     this.gameBoard[boardSlot] = this.turnPlayer.token;
     this.checkForGameEnd();
-    if (this.checkForGameEnd()) {
-      return this.checkForGameEnd();
-    }
-
     this.alternateTurns();
   }
 
@@ -159,11 +147,5 @@ class Game {
     var newGame = new Game(this.players);
     return newGame;
   }
-
-  // returnIfDefined(function) {
-  //   if (function) {
-  //     return function;
-  //   }
-  // }
 
 }

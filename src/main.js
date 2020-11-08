@@ -1,12 +1,21 @@
 var game;
 var board = document.querySelector('.game-board');
 
-window.onload = startGame;
+window.onload = startFirstGame;
 board.addEventListener('click', selectSpace);
 
-function startGame() {
-  game = new Game();
+function startGame(players) {
+  if (!players) {
+    game = new Game();
+  } else {
+    game = new Game(players);
+  }
+
   game.setupGame();
+}
+
+function startFirstGame() {
+  startGame();
 }
 
 function selectSpace(event) {
@@ -20,9 +29,8 @@ function placePiece(id) {
   }
 
   if (result) {
-    console.log(result);
-    game = result;
-    game.setupGame();
+    var players = game.players;
+    startGame(players);
   }
 }
 
