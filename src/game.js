@@ -1,5 +1,5 @@
 class Game {
-  constructor() {
+  constructor(players) {
     this.id = Date.now();
     this.gameBoard = {
       first : '',
@@ -13,7 +13,7 @@ class Game {
       ninth : ''
     }    
 
-    this.players = [];
+    this.players = players || [];
     this.turnPlayer;
     this.nonTurnPlayer;
     this.result;
@@ -33,9 +33,11 @@ class Game {
   }
 
   setupGame() {
-    this.generatePlayers();
-    this.players[0].turn = true;
-    this.assignTurnPlayer();
+    if (this.players.length === 0) {
+      this.generatePlayers();
+    }
+
+    this.startFirstTurn();
   }
 
   alternateTurns() {
@@ -68,6 +70,16 @@ class Game {
     this.checkForVerticalWin();
     this.checkForHorizontalWin();
     this.checkForDiagonalWin();
+    if (this.result) {
+      // this.timeOut();
+      return this.startNewGame();
+    }
+  }
+
+  timeOut() {
+    var self = this;    
+    console.log('timeout running');
+    window.setTimeout(self.endGame, 1000);
   }
 
   checkForVerticalWin() {
@@ -110,9 +122,9 @@ class Game {
 
   decideWinner() {
     this.winningPlayer = this.turnPlayer;
-    this.result = `Player ${this.winningPlayer.playerNumber} has won!}`;    
+    this.result = `Player ${this.winningPlayer.playerNumber} has won!`;    
     this.saveWinningGameBoard(this.winningPlayer);
-    console.log(this.winningPlayer, this.result);
+    console.log(this.result);
   }
 
   fillSquare(boardSlot) {
@@ -126,33 +138,17 @@ class Game {
     player.winCount++;
   }
 
-  resetBoard() {
-    for (var boardSlot in this.gameBoard) {
-      this.gameBoard[boardSlot] = '';
-    }
+  startFirstTurn() {
+    this.players[0].turn = true;
+    this.assignTurnPlayer();
+  }
+
+  endGame() {
+    // make sure no more tokens can be added to the board
+    // tell players to save current states to local storage?
+    // players (with new saved totals and boards) needs to be used to create a new instance of Game on timeout
+    var newGame = new Game(this.players);
+    return newGame;
   }
 
 }
-
-/* win conditions
-    1 2 3
-    4 5 6
-    7 8 9
-
-    across:
-    123
-    456
-    789
-
-    vertically:
-    147
-    258
-    369
-
-    diagonally:
-    159
-    357
-
-    game board class?
-    the actual boards seen as wins
-*/
