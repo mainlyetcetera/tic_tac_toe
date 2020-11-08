@@ -2,16 +2,16 @@ class Game {
   constructor(players) {
     this.id = Date.now();
     this.gameBoard = {
-      first : '',
-      second : '',
-      third : '',
-      fourth : '',
-      fifth : '',
-      sixth : '',
-      seventh : '',
-      eighth : '',
-      ninth : ''
-    }    
+      's1' : '',
+      's2' : '',
+      's3' : '',
+      's4' : '',
+      's5' : '',
+      's6' : '',
+      's7' : '',
+      's8' : '',
+      's9' : ''
+    }
 
     this.players = players || [];
     this.turnPlayer;
@@ -37,7 +37,7 @@ class Game {
       this.generatePlayers();
     }
 
-    this.startFirstTurn();
+    this.starts1Turn();
   }
 
   alternateTurns() {
@@ -71,43 +71,43 @@ class Game {
   }
 
   timeOut() {
-    var self = this;    
+    var self = this;
     console.log('timeout running');
     window.setTimeout(self.endGame, 1000);
   }
 
   checkForVerticalWin() {
     var board = this.gameBoard;
-    if (board.first !== '' && board.first === board.fourth && board.first === board.seventh) {
+    if (board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7) {
       this.decideWinner();
-    } else if (board.second !== '' && board.second === board.fifth && board.second === board.eighth) {
+    } else if (board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8) {
       this.decideWinner();
-    } else if (board.third !== '' && board.third === board.sixth && board.third === board.ninth) {
+    } else if (board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9) {
       this.decideWinner();
     }
   }
 
   checkForHorizontalWin() {
     var board = this.gameBoard;
-    if (board.first !== '' && board.first === board.second && board.first === board.third) {
+    if (board.s1 !== '' && board.s1 === board.s2 && board.s1 === board.s3) {
       this.decideWinner();
-    } else if (board.fourth !== '' && board.fourth === board.fifth && board.fourth === board.sixth) {
+    } else if (board.s4 !== '' && board.s4 === board.s5 && board.s4 === board.s6) {
       this.decideWinner();
-    } else if (board.seventh !== '' && board.seventh === board.eighth && board.seventh === board.ninth) {
+    } else if (board.s7 !== '' && board.s7 === board.s8 && board.s7 === board.s9) {
       this.decideWinner();
     }
   }
 
   checkForDiagonalWin() {
     var board = this.gameBoard;
-    if (board.first !== '' && board.first === board.fifth && board.first === board.ninth) {
+    if (board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9) {
       this.decideWinner();
-    } else if (board.third !== '' && board.third === board.fifth && board.third === board.seventh) {
+    } else if (board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7) {
       this.decideWinner();
     }
   }
 
-  checkForDraw() {    
+  checkForDraw() {
     if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
       this.result = 'This game is a draw!'
       console.log(this.result);
@@ -116,7 +116,7 @@ class Game {
 
   decideWinner() {
     this.winningPlayer = this.turnPlayer;
-    this.result = `Player ${this.winningPlayer.playerNumber} has won!`;    
+    this.result = `Player ${this.winningPlayer.playerNumber} has won!`;
     this.saveWinningGameBoard(this.winningPlayer);
     console.log(this.result);
   }
@@ -132,7 +132,7 @@ class Game {
     player.winCount++;
   }
 
-  startFirstTurn() {
+  starts1Turn() {
     this.players[0].turn = true;
     this.assignTurnPlayer();
   }
