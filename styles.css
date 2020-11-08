@@ -1,0 +1,39 @@
+body {
+  display: flex;
+  border: solid black;
+  height: 100%;
+}
+
+.side-section {
+  display: flex;
+  border: solid black;
+  background: blue;
+  height: 100vh;
+  width: 25%;
+  flex-direction: column;
+}
+
+.mid-section {
+  display: flex;
+  border: solid black;
+  background: green;
+  height: 100vh;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.win-msg {
+  border: solid black;
+  margin-top: 8%;
+  height: 10% ;
+  width: 80%;
+}
+
+.game-board {
+  border: solid black;
+  margin-top: 12%;
+  margin-bottom: 8%;
+  height: 65%;
+  width: 75%;
+}
