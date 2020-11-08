@@ -15,7 +15,14 @@ function selectSpace(event) {
 
 function placePiece(id) {
   if (event.target.id && event.target.id === id) {
-    game.fillSquare(id);
+    var result = game.fillSquare(id);
+    console.log(game.players);
+  }
+
+  if (result) {
+    console.log(result);
+    game = result;
+    game.setupGame();
   }
 }
 

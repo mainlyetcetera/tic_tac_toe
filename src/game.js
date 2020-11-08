@@ -37,7 +37,7 @@ class Game {
       this.generatePlayers();
     }
 
-    this.starts1Turn();
+    this.startFirstTurn();
   }
 
   alternateTurns() {
@@ -66,7 +66,7 @@ class Game {
     this.checkForDiagonalWin();
     if (this.result) {
       // this.timeOut();
-      return this.startNewGame();
+      return this.endGame();
     }
   }
 
@@ -79,10 +79,13 @@ class Game {
   checkForVerticalWin() {
     var board = this.gameBoard;
     if (board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7) {
+      console.log("vert");
       this.decideWinner();
     } else if (board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8) {
+      console.log("vert");
       this.decideWinner();
     } else if (board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9) {
+      console.log("vert");
       this.decideWinner();
     }
   }
@@ -90,10 +93,13 @@ class Game {
   checkForHorizontalWin() {
     var board = this.gameBoard;
     if (board.s1 !== '' && board.s1 === board.s2 && board.s1 === board.s3) {
+      console.log("horiz");
       this.decideWinner();
     } else if (board.s4 !== '' && board.s4 === board.s5 && board.s4 === board.s6) {
+      console.log("horiz");
       this.decideWinner();
     } else if (board.s7 !== '' && board.s7 === board.s8 && board.s7 === board.s9) {
+      console.log("horiz");
       this.decideWinner();
     }
   }
@@ -101,8 +107,10 @@ class Game {
   checkForDiagonalWin() {
     var board = this.gameBoard;
     if (board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9) {
+      console.log("diagonal");
       this.decideWinner();
     } else if (board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7) {
+      console.log("diagonal");
       this.decideWinner();
     }
   }
@@ -124,6 +132,10 @@ class Game {
   fillSquare(boardSlot) {
     this.gameBoard[boardSlot] = this.turnPlayer.token;
     this.checkForGameEnd();
+    if (this.checkForGameEnd()) {
+      return this.checkForGameEnd();
+    }
+
     this.alternateTurns();
   }
 
@@ -132,8 +144,11 @@ class Game {
     player.winCount++;
   }
 
-  starts1Turn() {
-    this.players[0].turn = true;
+  startFirstTurn() {
+    if (this.players[0].turn === false && this.players[1].turn === false) {
+      this.players[0].turn = true;
+    }
+
     this.assignTurnPlayer();
   }
 
@@ -144,5 +159,11 @@ class Game {
     var newGame = new Game(this.players);
     return newGame;
   }
+
+  // returnIfDefined(function) {
+  //   if (function) {
+  //     return function;
+  //   }
+  // }
 
 }
