@@ -1,16 +1,11 @@
 var game;
 var board = document.querySelector('.game-board');
 
-window.onload = setGame;
+window.onload = startGame;
 board.addEventListener('click', stuff);
 
 function startGame() {
-  var newGame = new Game();
-  return newGame;
-}
-
-function setGame() {
-  game = startGame();
+  game = new Game();
 }
 
 function stuff(event) {
