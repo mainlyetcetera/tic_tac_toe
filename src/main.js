@@ -6,6 +6,7 @@ board.addEventListener('click', selectSpace);
 
 function startGame() {
   game = new Game();
+  game.setupGame();
 }
 
 function selectSpace(event) {
