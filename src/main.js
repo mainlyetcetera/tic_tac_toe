@@ -25,6 +25,7 @@ function selectSpace(event) {
 function placePiece(id) {
   if (event.target.id && event.target.id === id) {
     var result = game.fillSquare(id);
+    displayPieces(event);
     console.log(game.gameBoard);
   }
 
@@ -32,4 +33,22 @@ function placePiece(id) {
     var players = game.players;
     startGame(players);
   }
+}
+
+function displayPieces(event) {
+  // this displays the pieces in the spaces
+  // wherease placePiece uses the data model to fill the spot in the data model
+  // board.innerHTML = '';
+  var gameBoard = game.gameBoard;
+  var boardSlot = event.target.id; // key
+  // for (var boardSlot in gameBoard) {
+  populateSpace(boardSlot, gameBoard[event.target.id]); // < value
+  // }
+}
+
+function populateSpace(boardSlot, piece) {
+  var slot = document.querySelector(`#${boardSlot}`);
+  slot.innerHTML = `
+    <img src=${piece}>
+  `;
 }
