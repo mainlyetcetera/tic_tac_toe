@@ -52,8 +52,18 @@ body {
   width: 75%;
   display: grid;
   grid-template-columns: 33.3% 33.3% 33.4%;
+  grid-template-rows: 33.3% 33.3% 33.4%;
 }
 
 .game-board div {
   border: solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+div img {
+  border: solid black;
+  height: 40%;
 }
