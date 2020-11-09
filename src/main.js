@@ -36,14 +36,14 @@ function placePiece(id) {
 }
 
 function displayPieces(event) {
-  // this displays the pieces in the spaces
-  // wherease placePiece uses the data model to fill the spot in the data model
-  // board.innerHTML = '';
   var gameBoard = game.gameBoard;
-  var boardSlot = event.target.id; // key
-  // for (var boardSlot in gameBoard) {
-  populateSpace(boardSlot, gameBoard[event.target.id]); // < value
-  // }
+  var boardSlot = event.target.id;
+  populateSpace(boardSlot, gameBoard[event.target.id]);
+}
+
+function displayPlayerMsg() {
+  var msg = document.querySelector('.win-msg');
+  msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
 }
 
 function populateSpace(boardSlot, piece) {
@@ -56,8 +56,6 @@ function populateSpace(boardSlot, piece) {
 function endEverything() {
   var newGame = game.endGame();
   game = newGame;
-  console.log(game);
-  // call timeout with clear
 }
 
 function emptyEverything() {
