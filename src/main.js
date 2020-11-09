@@ -22,6 +22,7 @@ function setupGameOnDOM() {
   game.setupGame();
   displayMsg();
   displayWinCounts();
+  displayPlayerIcons();
 }
 
 function selectSpace(event) {
@@ -66,6 +67,13 @@ function displayWinCounts() {
   var player2Wins = document.querySelector('.player-2-wins');
   player1Wins.innerText = `Wins: ${players[0].winCount}`;
   player2Wins.innerText = `Wins: ${players[1].winCount}`;
+}
+
+function displayPlayerIcons() {
+  var player1Icon = document.querySelector('.player-1-icon');
+  var player2Icon = document.querySelector('.player-2-icon');
+  player1Icon.src = game.tokens[0];
+  player2Icon.src = game.tokens[1];
 }
 
 function populateSpace(boardSlot, piece) {
