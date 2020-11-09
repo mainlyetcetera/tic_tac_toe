@@ -12,7 +12,7 @@ function startGame(players) {
   }
 
   game.setupGame();
-  displayPlayerMsg();
+  displayMsg();
 }
 
 function startFirstGame() {
@@ -37,7 +37,7 @@ function placePiece(id) {
 
 function handlePlacePieceEffects(event) {
   displayPieces(event);
-  displayPlayerMsg();
+  displayMsg();
 }
 
 function displayPieces(event) {
@@ -46,9 +46,13 @@ function displayPieces(event) {
   populateSpace(boardSlot, gameBoard[event.target.id]);
 }
 
-function displayPlayerMsg() {
+function displayMsg() {
   var msg = document.querySelector('.win-msg');
-  msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
+  if (game.result) {
+    msg.innerText = game.result;
+  } else {
+    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
+  }
 }
 
 function populateSpace(boardSlot, piece) {
