@@ -18,12 +18,12 @@ class Game {
     this.nonTurnPlayer;
     this.result;
     this.winningPlayer;
-    this.tokens = ['token1', 'token2']; // these I need to get from assets
+    this.tokens = ['./assets/Dragon_Red_Eye_Tattoo.svg', './assets/Gat3.svg'];
   }
 
   generatePlayers() {
-    var player1 = new Player(1, 'token1');
-    var player2 = new Player(2, 'token2');
+    var player1 = new Player(1, this.tokens[0]);
+    var player2 = new Player(2, this.tokens[1]);
     player2.id += 1;
     this.addPlayers(player1, player2);
   }
@@ -126,7 +126,7 @@ class Game {
       this.gameBoard[boardSlot] = this.turnPlayer.token;
       this.checkForGameEnd();
       this.alternateTurns();
-    }   
+    }
   }
 
   saveWinningGameBoard(player) {
