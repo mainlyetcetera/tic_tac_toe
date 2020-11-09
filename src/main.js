@@ -21,6 +21,7 @@ function startFirstGame() {
 function setupGameOnDOM() {
   game.setupGame();
   displayMsg();
+  displayWinCounts();
 }
 
 function selectSpace(event) {
@@ -57,6 +58,14 @@ function displayMsg(result) {
   } else {
     msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
   }
+}
+
+function displayWinCounts() {
+  var players = game.players;
+  var player1Wins = document.querySelector('.player-1-wins');
+  var player2Wins = document.querySelector('.player-2-wins');
+  player1Wins.innerText = `Wins: ${players[0].winCount}`;
+  player2Wins.innerText = `Wins: ${players[1].winCount}`;
 }
 
 function populateSpace(boardSlot, piece) {
