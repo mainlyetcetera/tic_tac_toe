@@ -12,9 +12,11 @@ class Player {
     localStorage.setItem(`player${this.playerNumber}WinCount`, this.winCount);
   }
 
-  retrieveWinsFromStorage() {    
+  retrieveWinsFromStorage() {
     var parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
-    this.winCount = parsedWinCount;
+    if (parsedWinCount) {
+      this.winCount = parsedWinCount;
+    }
   }
 
   takeTurn() {

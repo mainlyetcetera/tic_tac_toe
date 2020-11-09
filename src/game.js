@@ -37,7 +37,16 @@ class Game {
       this.generatePlayers();
     }
 
+    this.retrieveWins();
     this.startFirstTurn();
+  }
+
+  retrieveWins() {
+    if (this.players.length > 0) {
+      for (var i = 0; i < this.players.length; i++) {
+        this.players[i].retrieveWinsFromStorage();
+      }
+    }
   }
 
   alternateTurns() {
@@ -132,6 +141,7 @@ class Game {
   saveWinningGameBoard(player) {
     player.wins.push(this.gameBoard);
     player.winCount++;
+    player.saveWinsToStorage();
   }
 
   startFirstTurn() {
