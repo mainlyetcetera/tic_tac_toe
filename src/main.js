@@ -33,7 +33,7 @@ function placePiece(id) {
     handlePlacePieceEffects(event);
   }
 
-  if (game.winningPlayer) {
+  if (game.winningPlayer || game.result === 'This game is a draw!') {
     endEverything();
     emptyEverything();
   }
@@ -75,7 +75,7 @@ function emptyEverything() {
   window.setTimeout(clearAll, 1000)
 }
 
-function clearAll() {  
+function clearAll() {
   clearStuff();
   setupGameOnDOM();
   // other things to remove
