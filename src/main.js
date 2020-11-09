@@ -29,9 +29,9 @@ function placePiece(id) {
     console.log(game.gameBoard);
   }
 
-  if (result) {
-    var players = game.players;
-    startGame(players);
+  if (game.winningPlayer) {
+    endEverything();
+    emptyEverything();
   }
 }
 
@@ -51,4 +51,27 @@ function populateSpace(boardSlot, piece) {
   slot.innerHTML = `
     <img src=${piece}>
   `;
+}
+
+function endEverything() {
+  var newGame = game.endGame();
+  game = newGame;
+  console.log(game);
+  // call timeout with clear
+}
+
+function emptyEverything() {
+  window.setTimeout(clearAll, 1000)
+}
+
+function clearAll() {
+  clearStuff();
+  // other things to remove
+}
+
+function clearStuff() {
+  for (var key in game.gameBoard) {
+    var slot = document.querySelector(`#${key}`);
+      slot.innerHTML = '';
+  }
 }

@@ -73,7 +73,7 @@ class Game {
   timeOut() {
     var self = this;
     console.log('timeout running');
-    window.setTimeout(self.endGame, 1000);
+    window.setTimeout(self.endGame(), 1000);
   }
 
   checkForVerticalWin() {
@@ -146,7 +146,10 @@ class Game {
     // make sure no more tokens can be added to the board
     // tell players to save current states to local storage?
     // players (with new saved totals and boards) needs to be used to create a new instance of Game on timeout
-    var newGame = new Game(this.players);
+
+    // reset values of board to empty strings
+    var players = this.players;
+    var newGame = new Game(players);
     return newGame;
   }
 
