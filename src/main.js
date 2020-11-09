@@ -11,12 +11,16 @@ function startGame(players) {
     game = new Game(players);
   }
 
-  game.setupGame();
-  displayMsg();
+  setupGameOnDOM();
 }
 
 function startFirstGame() {
   startGame();
+}
+
+function setupGameOnDOM() {
+  game.setupGame();
+  displayMsg();
 }
 
 function selectSpace(event) {
@@ -37,7 +41,7 @@ function placePiece(id) {
 
 function handlePlacePieceEffects(event) {
   displayPieces(event);
-  displayMsg();
+  displayMsg(game.result);
 }
 
 function displayPieces(event) {
@@ -46,10 +50,10 @@ function displayPieces(event) {
   populateSpace(boardSlot, gameBoard[event.target.id]);
 }
 
-function displayMsg() {
+function displayMsg(result) {
   var msg = document.querySelector('.win-msg');
-  if (game.result) {
-    msg.innerText = game.result;
+  if (result) {
+    msg.innerText = result;
   } else {
     msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
   }
@@ -71,8 +75,9 @@ function emptyEverything() {
   window.setTimeout(clearAll, 1000)
 }
 
-function clearAll() {
+function clearAll() {  
   clearStuff();
+  setupGameOnDOM();
   // other things to remove
 }
 
