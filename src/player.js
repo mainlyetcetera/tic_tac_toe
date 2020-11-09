@@ -5,15 +5,16 @@ class Player {
     this.playerNumber = number;
     this.token = token;
     this.wins = [];
-    this.winCount = 0;    
+    this.winCount = 0;
   }
 
   saveWinsToStorage() {
-
+    localStorage.setItem(`player${this.playerNumber}WinCount`, this.winCount);
   }
 
-  retrieveWinsFromStorage() {
-
+  retrieveWinsFromStorage() {    
+    var parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
+    this.winCount = parsedWinCount;
   }
 
   takeTurn() {
