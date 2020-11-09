@@ -122,9 +122,11 @@ class Game {
   }
 
   fillSquare(boardSlot) {
-    this.gameBoard[boardSlot] = this.turnPlayer.token;
-    this.checkForGameEnd();
-    this.alternateTurns();
+    if (this.gameBoard[boardSlot] === '') {
+      this.gameBoard[boardSlot] = this.turnPlayer.token;
+      this.checkForGameEnd();
+      this.alternateTurns();
+    }   
   }
 
   saveWinningGameBoard(player) {
