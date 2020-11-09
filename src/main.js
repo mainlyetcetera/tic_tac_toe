@@ -12,6 +12,7 @@ function startGame(players) {
   }
 
   game.setupGame();
+  displayPlayerMsg();
 }
 
 function startFirstGame() {
@@ -25,14 +26,18 @@ function selectSpace(event) {
 function placePiece(id) {
   if (event.target.id && event.target.id === id) {
     var result = game.fillSquare(id);
-    displayPieces(event);
-    console.log(game.gameBoard);
+    handlePlacePieceEffects(event);
   }
 
   if (game.winningPlayer) {
     endEverything();
     emptyEverything();
   }
+}
+
+function handlePlacePieceEffects(event) {
+  displayPieces(event);
+  displayPlayerMsg();
 }
 
 function displayPieces(event) {
