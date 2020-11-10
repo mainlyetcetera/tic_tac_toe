@@ -1,3 +1,7 @@
+* {
+  font-family: "EB Garamond", serif;
+}
+
 body {
   display: flex;
   border: solid black;
@@ -26,7 +30,7 @@ body {
 }
 
 .player-1-icon, .player-2-icon {
-  height: 78%;  
+  height: 78%;
 }
 
 .won-games {
