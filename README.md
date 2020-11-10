@@ -17,7 +17,7 @@
 
 ## Introduction
 
-The aim of [Tic-Tac-Toe]() is to enjoy the classic game of tic-tac-toe with a twist! Your pieces are dragons and cats!!
+The aim of [Tic-Tac-Toe](https://github.com/mainlyetcetera/tic_tac_toe) is to enjoy the classic game of tic-tac-toe with a twist! Your pieces are dragons and cats!!
 
 [Here]() is the basic specs for the game.
 ---
@@ -37,6 +37,7 @@ The motivation for this project was to put together everything I learned in Modu
 ## Technologies
 
 ## Deployment
+### https://github.com/mainlyetcetera/tic_tac_toe
 
 ## Challenges
 
