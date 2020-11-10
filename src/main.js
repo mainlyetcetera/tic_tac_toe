@@ -58,7 +58,7 @@ function displayMsg(result) {
   if (result) {
     msg.innerText = result;
   } else {
-    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
+    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`;
   }
 }
 
@@ -94,7 +94,7 @@ function resetGame() {
 }
 
 function resetWithTimer() {
-  window.setTimeout(clearAll, 2500)
+  window.setTimeout(clearAll, 2500);
 }
 
 function clearAll() {

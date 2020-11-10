@@ -118,7 +118,7 @@ class Game {
 
   checkForDraw() {
     if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
-      this.result = 'This game is a draw!'
+      this.result = 'This game is a draw!';
       console.log(this.result);
     }
   }
@@ -152,12 +152,7 @@ class Game {
     this.assignTurnPlayer();
   }
 
-  endGame() {
-    // make sure no more tokens can be added to the board
-    // tell players to save current states to local storage?
-    // players (with new saved totals and boards) needs to be used to create a new instance of Game on timeout
-
-    // reset values of board to empty strings
+  endGame() {    
     var players = this.players;
     var newGame = new Game(players);
     return newGame;
