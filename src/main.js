@@ -99,8 +99,7 @@ function resetWithTimer() {
 
 function clearAll() {
   clearSpaces();
-  setupGameOnDOM();
-  // other things to remove
+  setupGameOnDOM();  
 }
 
 function clearSpaces() {
