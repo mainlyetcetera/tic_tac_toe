@@ -33,6 +33,11 @@ body {
   height: 78%;
 }
 
+.player-1-wins, .player-2-wins {
+  font-size: 21px;
+  margin-top: 3.5%;
+}
+
 .won-games {
   border: solid black;
   width: 97%;
