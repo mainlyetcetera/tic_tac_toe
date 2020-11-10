@@ -92,5 +92,11 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 - have pieces fade in and out
 
 ## Author
+<table>
+  <tr>
+    <td> Eric Campbell <a href="https://github.com/mainlyetcetera">GitHub</td>
+  </tr>
+<td><img src="https://avatars0.githubusercontent.com/u/70294115?s=460&u=b24fae5febb30e7d1c9507c51ee760dba5e396e5&v=4" alt="Eric Campbell's lovely face" width="150" height="auto" /></td>
+</table>
 
 ## Contributors
