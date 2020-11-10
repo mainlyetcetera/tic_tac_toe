@@ -31,7 +31,7 @@ function selectSpace(event) {
 
 function placePiece(id) {
   if (event.target.id && event.target.id === id) {
-    var result = game.fillSquare(id);
+    game.fillSquare(id);
     handlePlacePieceEffects(event);
   }
 
@@ -50,7 +50,7 @@ function handlePlacePieceEffects(event) {
 function displayPieces(event) {
   var gameBoard = game.gameBoard;
   var boardSlot = event.target.id;
-  populateSpace(boardSlot, gameBoard[event.target.id]);
+  populateSpace(boardSlot, gameBoard[boardSlot]);
 }
 
 function displayMsg(result) {
@@ -103,8 +103,8 @@ function clearAll() {
 }
 
 function clearSpaces() {
-  for (var key in game.gameBoard) {
-    var slot = document.querySelector(`#${key}`);
+  for (var boardSlot in game.gameBoard) {
+    var slot = document.querySelector(`#${boardSlot}`);
       slot.innerHTML = '';
   }
 
