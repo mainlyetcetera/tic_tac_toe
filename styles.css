@@ -6,7 +6,7 @@ body {
   display: flex;
   border: solid black;
   height: 100vh;
-  background-image:    
+  background-image:
     linear-gradient(#00cccc, #004c99, #190033);
 }
 
@@ -67,18 +67,33 @@ body {
 }
 
 .game-board {
-  border: solid black;
   margin-top: 12%;
   margin-bottom: 8%;
   height: 65%;
   width: 75%;
   display: grid;
   grid-template-columns: 33.3% 33.3% 33.4%;
-  grid-template-rows: 33.3% 33.3% 33.4%;
+  grid-template-rows: 33.3% 33.3% 33.4%;  
 }
 
 #s1, #s3, #s5, #s7, #s9 {
   background-color: #006666;
+}
+
+#s1 {
+  border-top-left-radius: 5px;
+}
+
+#s3 {
+  border-top-right-radius: 5px;
+}
+
+#s7 {
+  border-bottom-left-radius: 5px;
+}
+
+#s9 {
+  border-bottom-right-radius: 5px;
 }
 
 #s2, #s4, #s6, #s8 {
@@ -86,7 +101,6 @@ body {
 }
 
 .game-board div {
-  border: solid black;
   display: flex;
   justify-content: center;
   flex-direction: column;
