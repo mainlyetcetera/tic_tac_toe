@@ -86,13 +86,13 @@ body {
   background-color: #00ffff;
 }
 
-.cardinal-filled, .cardinal-filled:hover {
+.filled, .filled:hover {
   background: #009999;
 }
 
-.ordinal-filled, .ordinal-filled:hover {
+/* .ordinal-filled, .ordinal-filled:hover {
   background: #006666;
-}
+} */
 
 #s1 {
   border-top-left-radius: 5px;

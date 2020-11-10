@@ -63,7 +63,7 @@ function displayMsg(result) {
 }
 
 function disableFilledSpace(event) {
-  event.target.className = `${event.target.className}-filled`;
+  event.target.className = `${event.target.className} filled`;
 }
 
 function displayWinCounts() {
@@ -99,7 +99,7 @@ function resetWithTimer() {
 
 function clearAll() {
   clearSpaces();
-  setupGameOnDOM();  
+  setupGameOnDOM();
 }
 
 function clearSpaces() {
@@ -108,17 +108,13 @@ function clearSpaces() {
       slot.innerHTML = '';
   }
 
-  resetSpaces();
+  resetSpaces('cardinal');
+  resetSpaces('ordinal');
 }
 
-function resetSpaces() {
-  var filledCardinalSpaces = document.querySelectorAll('.cardinal-filled');
-  var filledOrdinalSpaces = document.querySelectorAll('.ordinal-filled');
-  for (var i = 0; i < filledCardinalSpaces.length; i++) {
-    filledCardinalSpaces[i].className = 'cardinal';
-  }
-
-  for (var j = 0; j < filledOrdinalSpaces.length; j++) {
-    filledOrdinalSpaces[j].className = 'ordinal';
+function resetSpaces(className) {
+  var filledSpaces = document.querySelectorAll(`.${className}`);
+  for (var i = 0; i < filledSpaces.length; i++) {
+    filledSpaces[i].className = className;
   }
 }
