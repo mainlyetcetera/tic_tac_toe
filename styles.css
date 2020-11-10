@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  border: solid black;
+  height: 100%;
+}
+
+.side-section {
+  display: flex;
+  border: solid black;
+  height: 100vh;
+  width: 25%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side-section article {
+  border: solid black;
+  width: 50%;
+  margin-top: 10%;
+  margin-bottom: .5%;
+  height: 17%;
+}
+
+.won-games {
+  border: solid black;
+  width: 97%;
+  height: 76.75%;
+}
+
+.mid-section {
+  display: flex;
+  border: solid black;
+  background: green;
+  height: 100vh;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.win-msg {
+  border: solid black;
+  margin-top: 8%;
+  height: 10% ;
+  width: 80%;
+}
+
+.game-board {
+  border: solid black;
+  margin-top: 12%;
+  margin-bottom: 8%;
+  height: 65%;
+  width: 75%;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.4%;
+  grid-template-rows: 33.3% 33.3% 33.4%;
+}
+
+.game-board div {
+  border: solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+div img {
+  border: solid black;
+  height: 40%;
+}

@@ -2,28 +2,28 @@ class Game {
   constructor(players) {
     this.id = Date.now();
     this.gameBoard = {
-      first : '',
-      second : '',
-      third : '',
-      fourth : '',
-      fifth : '',
-      sixth : '',
-      seventh : '',
-      eighth : '',
-      ninth : ''
-    }    
+      s1 : '',
+      s2 : '',
+      s3 : '',
+      s4 : '',
+      s5 : '',
+      s6 : '',
+      s7 : '',
+      s8 : '',
+      s9 : ''
+    }
 
     this.players = players || [];
     this.turnPlayer;
     this.nonTurnPlayer;
     this.result;
     this.winningPlayer;
-    this.tokens = ['token1', 'token2']; // these I need to get from assets
+    this.tokens = ['./assets/Dragon_Red_Eye_Tattoo.svg', './assets/Gat3.svg'];
   }
 
   generatePlayers() {
-    var player1 = new Player(1, 'token1');
-    var player2 = new Player(2, 'token2');
+    var player1 = new Player(1, this.tokens[0]);
+    var player2 = new Player(2, this.tokens[1]);
     player2.id += 1;
     this.addPlayers(player1, player2);
   }
@@ -37,7 +37,16 @@ class Game {
       this.generatePlayers();
     }
 
+    this.retrieveWins();
     this.startFirstTurn();
+  }
+
+  retrieveWins() {
+    if (this.players.length > 0) {
+      for (var i = 0; i < this.players.length; i++) {
+        this.players[i].retrieveWinsFromStorage();
+      }
+    }
   }
 
   alternateTurns() {
@@ -66,48 +75,48 @@ class Game {
     this.checkForDiagonalWin();
     if (this.result) {
       // this.timeOut();
-      return this.startNewGame();
+      return this.endGame();
     }
   }
 
   timeOut() {
-    var self = this;    
+    var self = this;
     console.log('timeout running');
-    window.setTimeout(self.endGame, 1000);
+    window.setTimeout(self.endGame(), 1000);
   }
 
   checkForVerticalWin() {
     var board = this.gameBoard;
-    if (board.first !== '' && board.first === board.fourth && board.first === board.seventh) {
+    if (board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7) {
       this.decideWinner();
-    } else if (board.second !== '' && board.second === board.fifth && board.second === board.eighth) {
+    } else if (board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8) {
       this.decideWinner();
-    } else if (board.third !== '' && board.third === board.sixth && board.third === board.ninth) {
+    } else if (board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9) {
       this.decideWinner();
     }
   }
 
   checkForHorizontalWin() {
     var board = this.gameBoard;
-    if (board.first !== '' && board.first === board.second && board.first === board.third) {
+    if (board.s1 !== '' && board.s1 === board.s2 && board.s1 === board.s3) {
       this.decideWinner();
-    } else if (board.fourth !== '' && board.fourth === board.fifth && board.fourth === board.sixth) {
+    } else if (board.s4 !== '' && board.s4 === board.s5 && board.s4 === board.s6) {
       this.decideWinner();
-    } else if (board.seventh !== '' && board.seventh === board.eighth && board.seventh === board.ninth) {
+    } else if (board.s7 !== '' && board.s7 === board.s8 && board.s7 === board.s9) {
       this.decideWinner();
     }
   }
 
   checkForDiagonalWin() {
     var board = this.gameBoard;
-    if (board.first !== '' && board.first === board.fifth && board.first === board.ninth) {
+    if (board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9) {
       this.decideWinner();
-    } else if (board.third !== '' && board.third === board.fifth && board.third === board.seventh) {
+    } else if (board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7) {
       this.decideWinner();
     }
   }
 
-  checkForDraw() {    
+  checkForDraw() {
     if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
       this.result = 'This game is a draw!'
       console.log(this.result);
@@ -116,24 +125,30 @@ class Game {
 
   decideWinner() {
     this.winningPlayer = this.turnPlayer;
-    this.result = `Player ${this.winningPlayer.playerNumber} has won!`;    
+    this.result = `Player ${this.winningPlayer.playerNumber} has won!`;
     this.saveWinningGameBoard(this.winningPlayer);
     console.log(this.result);
   }
 
   fillSquare(boardSlot) {
-    this.gameBoard[boardSlot] = this.turnPlayer.token;
-    this.checkForGameEnd();
-    this.alternateTurns();
+    if (this.gameBoard[boardSlot] === '') {
+      this.gameBoard[boardSlot] = this.turnPlayer.token;
+      this.checkForGameEnd();
+      this.alternateTurns();
+    }
   }
 
   saveWinningGameBoard(player) {
     player.wins.push(this.gameBoard);
     player.winCount++;
+    player.saveWinsToStorage();
   }
 
   startFirstTurn() {
-    this.players[0].turn = true;
+    if (this.players[0].turn === false && this.players[1].turn === false) {
+      this.players[0].turn = true;
+    }
+
     this.assignTurnPlayer();
   }
 
@@ -141,7 +156,10 @@ class Game {
     // make sure no more tokens can be added to the board
     // tell players to save current states to local storage?
     // players (with new saved totals and boards) needs to be used to create a new instance of Game on timeout
-    var newGame = new Game(this.players);
+
+    // reset values of board to empty strings
+    var players = this.players;
+    var newGame = new Game(players);
     return newGame;
   }
 
