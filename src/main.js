@@ -36,7 +36,7 @@ function placePiece(id) {
   }
 
   if (game.winningPlayer || game.result === 'This game is a draw!') {
-    endEverything();
+    resetGame();
     emptyEverything();
   }
 }
@@ -88,7 +88,7 @@ function populateSpace(boardSlot, piece) {
   `;
 }
 
-function endEverything() {
+function resetGame() {
   var newGame = game.endGame();
   game = newGame;
 }
