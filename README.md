@@ -80,6 +80,17 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 
 ## Future Features
 
+`Just a few ideas for the future:`
+
+- allow players to easily choose their own player icon
+  - update player icons displaying on main page to reflect that
+- allow players ways to choose who goes first, like flipping a coin or guessing a number
+- switch the background view on command
+- place a random piece at the beginning of the game
+- set up timers so players only have a few seconds to make a move!
+- put in more imaginative win messages
+- have pieces fade in and out
+
 ## Author
 
 ## Contributors
