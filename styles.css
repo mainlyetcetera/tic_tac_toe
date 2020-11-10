@@ -26,8 +26,7 @@ body {
 }
 
 .player-1-icon, .player-2-icon {
-  height: 100px;
-  width: 100px;
+  height: 78%;  
 }
 
 .won-games {
