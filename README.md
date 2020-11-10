@@ -55,6 +55,13 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 
 ## Technologies
 
+1. JavaScript ES5
+2. CSS3
+3. HTML
+4. Github
+5. Chrome Developer Tools
+6. Firefox Developer Tools
+
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
 
