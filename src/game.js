@@ -73,16 +73,6 @@ class Game {
     this.checkForVerticalWin();
     this.checkForHorizontalWin();
     this.checkForDiagonalWin();
-    if (this.result) {
-      // this.timeOut();
-      return this.endGame();
-    }
-  }
-
-  timeOut() {
-    var self = this;
-    console.log('timeout running');
-    window.setTimeout(self.endGame(), 1000);
   }
 
   checkForVerticalWin() {
@@ -119,7 +109,6 @@ class Game {
   checkForDraw() {
     if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
       this.result = 'This game is a draw!';
-      console.log(this.result);
     }
   }
 
@@ -127,7 +116,6 @@ class Game {
     this.winningPlayer = this.turnPlayer;
     this.result = `Player ${this.winningPlayer.playerNumber} has won!`;
     this.saveWinningGameBoard(this.winningPlayer);
-    console.log(this.result);
   }
 
   fillSquare(boardSlot) {
@@ -152,10 +140,10 @@ class Game {
     this.assignTurnPlayer();
   }
 
-  endGame() {    
+  endGame() {
     var players = this.players;
     var newGame = new Game(players);
     return newGame;
   }
-
+  
 }
