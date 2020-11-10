@@ -37,7 +37,7 @@ function placePiece(id) {
 
   if (game.winningPlayer || game.result === 'This game is a draw!') {
     resetGame();
-    emptyEverything();
+    resetWithTimer();
   }
 }
 
@@ -93,7 +93,7 @@ function resetGame() {
   game = newGame;
 }
 
-function emptyEverything() {
+function resetWithTimer() {
   window.setTimeout(clearAll, 1000)
 }
 
