@@ -73,6 +73,11 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 
 ## Wins
 
+- reaching out to my mentor for help instead of struggling with challenges too long!
+- found several opportunities to reuse functions, keeping the code as D.R.Y. as I could
+- created an entire app by myself!
+- overcame a couple bugs that were the result of event delegation, allowing for oddities when clicking right on the edge of the game board
+
 ## Future Features
 
 ## Author
