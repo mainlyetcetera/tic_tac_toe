@@ -30,7 +30,18 @@ The motivation for this project was to put together everything I learned in Modu
 
 ## Features
 
-<!-- another table here -->
+- [Play Tic-Tac-Toe](#Play Tic-Tac-Toe)
+- [Enjoy your cats and dragons!](#Enjoy your cats and dragons!)
+- [Keep track of your wins!](#Keep track of your wins!)
+- [Keep track of your wins even if you refresh the page!](#Keep track of your wins even upon refresh!)
+
+#### Play Tic-Tac-Toe
+
+#### Enjoy your cats and dragons!
+
+#### Keep track of your wins!
+
+#### Keep track of your wins even upon refresh!
 
 ---
 
@@ -42,6 +53,8 @@ The motivation for this project was to put together everything I learned in Modu
 ## Challenges
 
 ## Wins
+
+## Future Features
 
 ## Author
 
