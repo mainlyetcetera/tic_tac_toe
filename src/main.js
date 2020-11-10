@@ -1,7 +1,7 @@
 var game;
 var board = document.querySelector('.game-board');
 
-window.onload = startFirstGame;
+window.onload = startAllGames;
 board.addEventListener('click', selectSpace);
 
 function startGame(players) {
@@ -14,7 +14,7 @@ function startGame(players) {
   setupGameOnDOM();
 }
 
-function startFirstGame() {
+function startAllGames() {
   startGame();
 }
 
