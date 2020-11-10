@@ -90,10 +90,6 @@ body {
   background: #003333;
 }
 
-/* .ordinal-filled, .ordinal-filled:hover {
-  background: #006666;
-} */
-
 #s1 {
   border-top-left-radius: 5px;
 }
@@ -115,6 +111,8 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  border: solid black;
+  border-width: thin;
 }
 
 div img {
