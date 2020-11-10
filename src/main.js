@@ -44,6 +44,7 @@ function placePiece(id) {
 function handlePlacePieceEffects(event) {
   displayPieces(event);
   displayMsg(game.result);
+  disableFilledSpace(event);
 }
 
 function displayPieces(event) {
@@ -59,6 +60,10 @@ function displayMsg(result) {
   } else {
     msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
   }
+}
+
+function disableFilledSpace(event) {
+  event.target.className = `${event.target.className}-filled`;
 }
 
 function displayWinCounts() {
@@ -93,14 +98,28 @@ function emptyEverything() {
 }
 
 function clearAll() {
-  clearStuff();
+  clearSpaces();
   setupGameOnDOM();
   // other things to remove
 }
 
-function clearStuff() {
+function clearSpaces() {
   for (var key in game.gameBoard) {
     var slot = document.querySelector(`#${key}`);
       slot.innerHTML = '';
+  }
+
+  resetSpaces();
+}
+
+function resetSpaces() {
+  var filledCardinalSpaces = document.querySelectorAll('.cardinal-filled');
+  var filledOrdinalSpaces = document.querySelectorAll('.ordinal-filled');
+  for (var i = 0; i < filledCardinalSpaces.length; i++) {
+    filledCardinalSpaces[i].className = 'cardinal';
+  }
+
+  for (var j = 0; j < filledOrdinalSpaces.length; j++) {
+    filledOrdinalSpaces[j].className = 'ordinal';
   }
 }

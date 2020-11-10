@@ -92,6 +92,14 @@ body {
   background-color: #00ffff;
 }
 
+.cardinal-filled, .cardinal-filled:hover {
+  background: #009999;
+}
+
+.ordinal-filled, .ordinal-filled:hover {
+  background: #006666;
+}
+
 #s1 {
   border-top-left-radius: 5px;
 }
@@ -114,6 +122,10 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+/* .game-board div:disabled {
+  background: #ccc;
+} */
 
 div img {
   border: solid black;
