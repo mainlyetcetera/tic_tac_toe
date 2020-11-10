@@ -6,8 +6,8 @@ body {
   display: flex;
   border: solid black;
   height: 100vh;
-  /* background-image:
-    linear-gradient(#003300, #006600, #f7e4bf); */
+  background-image:    
+    linear-gradient(#00cccc, #004c99, #190033);
 }
 
 .side-section {
