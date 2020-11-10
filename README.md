@@ -100,3 +100,7 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 </table>
 
 ## Contributors
+
+##### Thank you for your contributions!
+
+- For his help and constant sanity checks: <a href="https://github.com/Josephhaefling">Joe Haefling</a>
