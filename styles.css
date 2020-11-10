@@ -73,11 +73,23 @@ body {
   width: 75%;
   display: grid;
   grid-template-columns: 33.3% 33.3% 33.4%;
-  grid-template-rows: 33.3% 33.3% 33.4%;  
+  grid-template-rows: 33.3% 33.3% 33.4%;
 }
 
-#s1, #s3, #s5, #s7, #s9 {
+.ordinal {
   background-color: #006666;
+}
+
+.ordinal:hover {
+  background-color: #00cccc;
+}
+
+.cardinal {
+  background-color: #009999;
+}
+
+.cardinal:hover {
+  background-color: #00ffff;
 }
 
 #s1 {
@@ -94,10 +106,6 @@ body {
 
 #s9 {
   border-bottom-right-radius: 5px;
-}
-
-#s2, #s4, #s6, #s8 {
-  background-color: #009999;
 }
 
 .game-board div {
