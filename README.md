@@ -37,11 +37,19 @@ The motivation for this project was to put together everything I learned in Modu
 
 #### Play Tic-Tac-Toe
 
+Enjoy the classic game of Tic-Tac-Toe!
+
 #### Enjoy your cats and dragons!
+
+Now your game pieces are **CATS** and **DRAGONS**!! No more boring `X's` and `O's`. Tic-Tac-Toe just leveled up!
 
 #### Keep track of your wins!
 
+Relax as the game keeps track of your wins for you! No more dispute with your friend as to who is the champion!
+
 #### Keep track of your wins even upon refresh!
+
+No, your opponent cannot hope to refresh the page and see the counts disappear! Continue to show your dominance through a page refresh!
 
 ---
 
