@@ -1,7 +1,7 @@
 var game;
 var board = document.querySelector('.game-board');
 
-window.onload = startFirstGame;
+window.onload = startAllGames;
 board.addEventListener('click', selectSpace);
 
 function startGame(players) {
@@ -14,7 +14,7 @@ function startGame(players) {
   setupGameOnDOM();
 }
 
-function startFirstGame() {
+function startAllGames() {
   startGame();
 }
 
@@ -31,25 +31,26 @@ function selectSpace(event) {
 
 function placePiece(id) {
   if (event.target.id && event.target.id === id) {
-    var result = game.fillSquare(id);
+    game.fillSquare(id);
     handlePlacePieceEffects(event);
   }
 
   if (game.winningPlayer || game.result === 'This game is a draw!') {
-    endEverything();
-    emptyEverything();
+    resetGame();
+    resetWithTimer();
   }
 }
 
 function handlePlacePieceEffects(event) {
   displayPieces(event);
   displayMsg(game.result);
+  disableFilledSpace(event);
 }
 
 function displayPieces(event) {
   var gameBoard = game.gameBoard;
   var boardSlot = event.target.id;
-  populateSpace(boardSlot, gameBoard[event.target.id]);
+  populateSpace(boardSlot, gameBoard[boardSlot]);
 }
 
 function displayMsg(result) {
@@ -57,8 +58,12 @@ function displayMsg(result) {
   if (result) {
     msg.innerText = result;
   } else {
-    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`
+    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`;
   }
+}
+
+function disableFilledSpace(event) {
+  event.target.className = `${event.target.className} filled`;
 }
 
 function displayWinCounts() {
@@ -83,24 +88,33 @@ function populateSpace(boardSlot, piece) {
   `;
 }
 
-function endEverything() {
+function resetGame() {
   var newGame = game.endGame();
   game = newGame;
 }
 
-function emptyEverything() {
-  window.setTimeout(clearAll, 1000)
+function resetWithTimer() {
+  window.setTimeout(clearAll, 2500);
 }
 
 function clearAll() {
-  clearStuff();
+  clearSpaces();
   setupGameOnDOM();
-  // other things to remove
 }
 
-function clearStuff() {
-  for (var key in game.gameBoard) {
-    var slot = document.querySelector(`#${key}`);
+function clearSpaces() {
+  for (var boardSlot in game.gameBoard) {
+    var slot = document.querySelector(`#${boardSlot}`);
       slot.innerHTML = '';
+  }
+
+  resetSpaces('cardinal');
+  resetSpaces('ordinal');
+}
+
+function resetSpaces(className) {
+  var filledSpaces = document.querySelectorAll(`.${className}`);
+  for (var i = 0; i < filledSpaces.length; i++) {
+    filledSpaces[i].className = className;
   }
 }

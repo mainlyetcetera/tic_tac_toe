@@ -73,16 +73,6 @@ class Game {
     this.checkForVerticalWin();
     this.checkForHorizontalWin();
     this.checkForDiagonalWin();
-    if (this.result) {
-      // this.timeOut();
-      return this.endGame();
-    }
-  }
-
-  timeOut() {
-    var self = this;
-    console.log('timeout running');
-    window.setTimeout(self.endGame(), 1000);
   }
 
   checkForVerticalWin() {
@@ -118,8 +108,7 @@ class Game {
 
   checkForDraw() {
     if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
-      this.result = 'This game is a draw!'
-      console.log(this.result);
+      this.result = 'This game is a draw!';
     }
   }
 
@@ -127,7 +116,6 @@ class Game {
     this.winningPlayer = this.turnPlayer;
     this.result = `Player ${this.winningPlayer.playerNumber} has won!`;
     this.saveWinningGameBoard(this.winningPlayer);
-    console.log(this.result);
   }
 
   fillSquare(boardSlot) {
@@ -153,14 +141,9 @@ class Game {
   }
 
   endGame() {
-    // make sure no more tokens can be added to the board
-    // tell players to save current states to local storage?
-    // players (with new saved totals and boards) needs to be used to create a new instance of Game on timeout
-
-    // reset values of board to empty strings
     var players = this.players;
     var newGame = new Game(players);
     return newGame;
   }
-
+  
 }
