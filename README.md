@@ -67,6 +67,10 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 
 ## Challenges
 
+- accepting event delegation instead of my comfort level of a multitude of query selectors
+- adding the disabled tag to HTML elements with JavaScript
+- making checkForWin functions take parameters to be D.R.Y.
+
 ## Wins
 
 ## Future Features
