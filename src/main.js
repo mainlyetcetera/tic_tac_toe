@@ -94,7 +94,7 @@ function resetGame() {
 }
 
 function resetWithTimer() {
-  window.setTimeout(clearAll, 1000)
+  window.setTimeout(clearAll, 4000)
 }
 
 function clearAll() {
