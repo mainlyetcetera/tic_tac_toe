@@ -10,6 +10,7 @@
 - [Features](#features)
 - [Technologies](#technologies)
 - [Architecture](#architecture)
+- [Demonstration](#demonstration)
 - [Deployment](#deployment)
 - [Author](#author)
 - [Challenges](#challenges)
@@ -87,6 +88,8 @@ On the other hand, `main.js` existed to house all *DOM-related* JavaScript. This
 The order of the files, at least in terms of the `<script>` elements in `index.html` is significant. `player.js` is first because it does not require any info from any other file. It could stand on its own. `game.js` needs to succeed `player.js` as `game.js` needs it in order to make the **Player** instances. Finally comes `main.js`. The DOM-related file needs data from both the **Player** and **Game** classes, so it must come last. This ensures that each file has access to the data it needs to function!
 
 In summary, `player.js` created the *Player* class used by the *Game* class in `game.js`. These files together formed the entirely of the data model, and the game could be completely played out of the console by manipulating the data of the *Game* instance. Then I used `main.js` to handle all *DOM-related* JavaScript. `main.js` was responsible for displaying all data and allowing the user a GUI with which to interact with the game, even though all data manipulation was handled between `game.js` and `player.js`.
+
+## Demonstration
 
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
