@@ -91,6 +91,10 @@ In summary, `player.js` created the *Player* class used by the *Game* class in `
 
 ## Demonstration
 
+<p align="center">
+<img src="https://gph.is/g/4VXjkXR">
+</p>
+
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
 
