@@ -65,6 +65,13 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 
 ## Architecture
 
+The overall architecture for this project is:
+
+- 1 **HTML** file housing the components of the page
+- 3 **JavaScript** files handling all functionality
+  - these files are all housed in a `src` directory
+- 1 **CSS** file handling the styling
+
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
 
