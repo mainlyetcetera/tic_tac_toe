@@ -79,6 +79,9 @@ I felt one **HTML** and **CSS** file was sufficient as there is currently only o
   1. `game.js`
   1. `main.js`
 
+One of the main goals of the project was to cleanly separate the data model and the DOM. These three files reflect this goal. The game involves two classes, the `Player` class and the `Game` class. My goal was to be able to run the entire game from the console using only methods from these two classes. The `Game` class held the majority of the game's functionality, while the `Player` class held a smaller portion. The `Player` class allowed for the creation of `Player` instances that the game could use. It also allowed me to save the wins and win counts of the player instances via *local storage*, another key feature of the application. The `Game` class held the methods to place pieces on the game board, declare a win or draw depending on the order of the pieces, and start a new game once the current game had concluded. Upon a game's conclusion, the `Game` class ran a method telling the `Player` instances to save the board and increment their win count in the event that that player won. Of course, since at this point the game existed only in the data model, there were several `console.logs` to allow me to see if my game was working!
+
+
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
 
