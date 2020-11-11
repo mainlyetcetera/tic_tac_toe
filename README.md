@@ -72,6 +72,13 @@ The overall architecture for this project is:
   - these files are all housed in a `src` directory
 - 1 **CSS** file handling the styling
 
+### Reasoning for Architecture
+
+I felt one **HTML** and **CSS** file was sufficient as there is currently only one page in the project. Perhaps when I add to the project, it may be worth adding more pages here to help handle that load. I used three JavaScript files:
+  1. `player.js`
+  1. `game.js`
+  1. `main.js`
+
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
 
