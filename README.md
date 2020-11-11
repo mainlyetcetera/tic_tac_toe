@@ -19,7 +19,7 @@
 
 The aim of [Tic-Tac-Toe](https://github.com/mainlyetcetera/tic_tac_toe) is to enjoy the classic game of tic-tac-toe with a twist! Your pieces are dragons and cats!!
 
-[Here](https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html) is the basic specs for the game.
+[Here](https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html) are the basic specs for the game.
 ---
 
 ## Motivation
