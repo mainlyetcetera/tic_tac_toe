@@ -9,6 +9,7 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies](#technologies)
+- [Architecture](#architecture)
 - [Deployment](#deployment)
 - [Author](#author)
 - [Challenges](#challenges)
@@ -61,6 +62,8 @@ No, your opponent cannot hope to refresh the page and see the counts disappear! 
 4. Github
 5. Chrome Developer Tools
 6. Firefox Developer Tools
+
+## Architecture
 
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
