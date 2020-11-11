@@ -19,7 +19,7 @@
 
 The aim of [Tic-Tac-Toe](https://github.com/mainlyetcetera/tic_tac_toe) is to enjoy the classic game of tic-tac-toe with a twist! Your pieces are dragons and cats!!
 
-[Here](https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html) is the basic specs for the game.
+[Here](https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html) are the basic specs for the game.
 ---
 
 ## Motivation
@@ -30,10 +30,10 @@ The motivation for this project was to put together everything I learned in Modu
 
 ## Features
 
-- [Play Tic-Tac-Toe](#Play Tic-Tac-Toe)
-- [Enjoy your cats and dragons!](#Enjoy your cats and dragons!)
-- [Keep track of your wins!](#Keep track of your wins!)
-- [Keep track of your wins even if you refresh the page!](#Keep track of your wins even upon refresh!)
+- [Play Tic-Tac-Toe](#Play-Tic-Tac-Toe)
+- [Enjoy your cats and dragons!](#Enjoy-your-cats-and-dragons!)
+- [Keep track of your wins!](#Keep-track-of-your-wins!)
+- [Keep track of your wins even if you refresh the page!](#Keep-track-of-your-wins-even-upon-refresh!)
 
 #### Play Tic-Tac-Toe
 
