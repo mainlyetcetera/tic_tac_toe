@@ -55,6 +55,8 @@ Relax as the game keeps track of your wins for you! No more dispute with your fr
 
 No, your opponent cannot hope to refresh the page and see the counts disappear! Continue to show your dominance through a page refresh!
 
+![Wins!](./assets/repo_assets/static_wins.png)
+
 ---
 
 ## Technologies
