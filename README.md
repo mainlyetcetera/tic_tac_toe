@@ -45,6 +45,8 @@ Enjoy the classic game of Tic-Tac-Toe!
 
 Now your game pieces are **CATS** and **DRAGONS**!! No more boring `X's` and `O's`. Tic-Tac-Toe just leveled up!
 
+![Some gameplay!](./assets/repo_assets/gameplay.png)
+
 #### Keep track of your wins!
 
 Relax as the game keeps track of your wins for you! No more dispute with your friend as to who is the champion!
