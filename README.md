@@ -84,6 +84,7 @@ One of the main goals of the project was to cleanly separate the data model and 
 
 On the other hand, `main.js` existed to house all *DOM-related* JavaScript. This code existed to make the entire data model interact with the page itself. All data manipulation was handled from `game.js` and `player.js`, while `main.js` handled the display of all data on the page and allows a player to interact with a visual board. It is something of an illusion: the player feels they are adding pieces to the board they see on the page, but `main.js` is actually telling the page to add add and remove data from the current game instance, so it is still being manipulated from `game.js`. `main.js` is then looking at the board as it exists and displaying it instead of directly adding the pieces itself.
 
+In summary, `player.js` created the *Player* class used by the *Game* class in `game.js`. These files together formed the entirely of the data model, and the game could be completely played out of the console by manipulating the data of the *Game* instance. Then I used `main.js` to handle all *DOM-related* JavaScript. `main.js` was responsible for displaying all data and allowing the user a GUI with which to interact with the game, even though all data manipulation was handled between `game.js` and `player.js`.
 
 ## Deployment
 ### https://github.com/mainlyetcetera/tic_tac_toe
