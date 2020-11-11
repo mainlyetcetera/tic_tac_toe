@@ -69,7 +69,7 @@ The overall architecture for this project is:
 
 - 1 **HTML** file housing the components of the page
 - 3 **JavaScript** files handling all functionality
-  - these files are all housed in a `src` directory
+  - these files are all housed in a *src* directory
 - 1 **CSS** file handling the styling
 - 1 *assets* directory holding the images that became the game pieces
 
