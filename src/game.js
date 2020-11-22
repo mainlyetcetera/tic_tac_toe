@@ -11,7 +11,7 @@ class Game {
       s7 : '',
       s8 : '',
       s9 : ''
-    }
+    };
 
     this.players = players || [];
     this.turnPlayer;
