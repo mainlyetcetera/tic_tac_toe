@@ -67,13 +67,10 @@ class Game {
 
   checkForVerticalWin() {
     const board = this.gameBoard;
-    if (board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7) {
-      this.decideWinner();
-    } else if (board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8) {
-      this.decideWinner();
-    } else if (board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9) {
-      this.decideWinner();
-    }
+    board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7 ? this.decideWinner()
+      : board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8 ? this.decideWinner()
+      : board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9 ? this.decideWinner()
+      : board;
   }
 
   checkForHorizontalWin() {
