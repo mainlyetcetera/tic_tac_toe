@@ -32,11 +32,8 @@ class Game {
     this.players.push(player1, player2);
   }
 
-  setupGame() {
-    if (this.players.length === 0) {
-      this.generatePlayers();
-    }
-
+  setupGame() {    
+    this.players.length === 0 ? this.generatePlayers() : this;
     this.retrieveWins();
     this.startFirstTurn();
   }
