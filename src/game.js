@@ -39,11 +39,9 @@ class Game {
   }
 
   retrieveWins() {
-    if (this.players.length > 0) {
-      for (var i = 0; i < this.players.length; i++) {
-        this.players[i].retrieveWinsFromStorage();
-      }
-    }
+    this.players.length > 0 ? this.players.forEach(player => {
+      player.retrieveWinsFromStorage();
+    }) : this.players;
   }
 
   alternateTurns() {
