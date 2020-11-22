@@ -12,11 +12,16 @@ class Player {
     localStorage.setItem(`player${this.playerNumber}WinCount`, this.winCount);
   }
 
+  // retrieveWinsFromStorage() {
+  //   var parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
+  //   if (parsedWinCount) {
+  //     this.winCount = parsedWinCount;
+  //   }
+  // }
+
   retrieveWinsFromStorage() {
-    var parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
-    if (parsedWinCount) {
-      this.winCount = parsedWinCount;
-    }
+    const parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
+    parsedWinCount ? this.winCount = parsedWinCount : parsedWinCount;
   }
 
   takeTurn() {
