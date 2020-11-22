@@ -14,11 +14,11 @@ class Game {
     };
 
     this.players = players || [];
+    this.tokens = ['./assets/Dragon_Red_Eye_Tattoo.svg', './assets/Gat3.svg'];
     this.turnPlayer;
     this.nonTurnPlayer;
     this.result;
-    this.winningPlayer;
-    this.tokens = ['./assets/Dragon_Red_Eye_Tattoo.svg', './assets/Gat3.svg'];
+    this.winningPlayer;    
   }
 
   generatePlayers() {
