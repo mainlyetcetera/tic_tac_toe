@@ -55,12 +55,7 @@ class Game {
   }
 
   assignTurnPlayer() {
-    for (let i = 0; i < this.players.length; i++) {
-      if (this.players[i].turn) {
-        this.turnPlayer = this.players[i];
-        this.nonTurnPlayer = this.players[i + 1] || this.players[i - 1];
-      }
-    }
+    this.players.forEach(player => player.turn ? this.turnPlayer = player : this.nonTurnPlayer = player);
   }
 
   checkForGameEnd() {
