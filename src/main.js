@@ -1,9 +1,6 @@
 const board = document.querySelector('.game-board');
 let game;
 
-window.onload = startAllGames;
-board.addEventListener('click', selectSpace);
-
 function startGame(players) {
   if (!players) {
     game = new Game();
@@ -118,3 +115,6 @@ function resetSpaces(className) {
     filledSpaces[i].className = className;
   }
 }
+
+window.onload = startAllGames;
+board.addEventListener('click', selectSpace);
