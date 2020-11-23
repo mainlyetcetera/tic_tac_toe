@@ -59,9 +59,9 @@ const displayWinCounts = () => {
   player2Wins.innerText = `Wins: ${players[1].winCount}`;
 }
 
-function displayPlayerIcons() {
-  var player1Icon = document.querySelector('.player-1-icon');
-  var player2Icon = document.querySelector('.player-2-icon');
+const displayPlayerIcons = () => {
+  const player1Icon = document.querySelector('.player-1-icon');
+  const player2Icon = document.querySelector('.player-2-icon');
   player1Icon.src = game.tokens[0];
   player2Icon.src = game.tokens[1];
 }
