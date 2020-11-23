@@ -73,8 +73,8 @@ const populateSpace = (boardSlot, piece) => {
     `;
 }
 
-function resetGame() {
-  var newGame = game.endGame();
+const resetGame = () => {
+  const newGame = game.endGame();
   game = newGame;
 }
 
