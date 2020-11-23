@@ -1,5 +1,5 @@
-var game;
-var board = document.querySelector('.game-board');
+const board = document.querySelector('.game-board');
+let game;
 
 window.onload = startAllGames;
 board.addEventListener('click', selectSpace);
