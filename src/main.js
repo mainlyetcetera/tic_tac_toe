@@ -41,13 +41,10 @@ const displayPieces = event => {
   populateSpace(slot, board[slot]); 
 }
 
-function displayMsg(result) {
-  var msg = document.querySelector('.win-msg');
-  if (result) {
-    msg.innerText = result;
-  } else {
-    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`;
-  }
+const displayMsg = result => {
+  const msg = document.querySelector('.win-msg');
+  const num = game.turnPlayer.playerNumber;
+  result ? msg.innerText = result : msg.innerText = `It's Player ${num}'s turn!`;
 }
 
 function disableFilledSpace(event) {
