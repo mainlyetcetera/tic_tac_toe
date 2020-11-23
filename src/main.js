@@ -15,9 +15,7 @@ const setupGameOnDOM = () => {
   displayPlayerIcons();
 }
 
-function selectSpace(event) {
-  placePiece(event.target.id);
-}
+const selectSpace = event => placePiece(event.target.id);
 
 function placePiece(id) {
   if (event.target.id && event.target.id === id) {
