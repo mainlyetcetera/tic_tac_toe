@@ -6,9 +6,7 @@ const startGame = players => {
   setupGameOnDOM();
 }
 
-function startAllGames() {
-  startGame();
-}
+const startAllGames = () => startGame();
 
 function setupGameOnDOM() {
   game.setupGame();
