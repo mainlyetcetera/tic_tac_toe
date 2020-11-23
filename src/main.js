@@ -66,11 +66,11 @@ const displayPlayerIcons = () => {
   player2Icon.src = game.tokens[1];
 }
 
-function populateSpace(boardSlot, piece) {
-  var slot = document.querySelector(`#${boardSlot}`);
+const populateSpace = (boardSlot, piece) => {
+  const slot = document.querySelector(`#${boardSlot}`);
   slot.innerHTML = `
     <img src=${piece}>
-  `;
+    `;
 }
 
 function resetGame() {
