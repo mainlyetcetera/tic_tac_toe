@@ -15,18 +15,18 @@ const setupGameOnDOM = () => {
   displayPlayerIcons();
 }
 
-const selectSpace = event => placePiece(event.target.id);
+const selectSpace = event => placePiece(event.target.id, event);
 
-function placePiece(id) {
-  if (event.target.id && event.target.id === id) {
-    game.fillSquare(id);
-    handlePlacePieceEffects(event);
-  }
+const placePiece = (id, event) => {
+  event.target.id && event.target.id === id ? (
+    game.fillSquare(id),
+    handlePlacePieceEffects(event)
+  ) : event;
 
-  if (game.winningPlayer || game.result === 'This game is a draw!') {
-    resetGame();
-    resetWithTimer();
-  }
+  game.winningPlayer || game.result === 'This game is a draw!' ? (
+    resetGame(),
+    resetWithTimer()
+  ) : event;
 }
 
 function handlePlacePieceEffects(event) {
