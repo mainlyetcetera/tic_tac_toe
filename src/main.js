@@ -1,13 +1,8 @@
 const board = document.querySelector('.game-board');
 let game;
 
-function startGame(players) {
-  if (!players) {
-    game = new Game();
-  } else {
-    game = new Game(players);
-  }
-
+const startGame = players => {
+  !players ? game = new Game() : game = new Game(players);
   setupGameOnDOM();
 }
 
