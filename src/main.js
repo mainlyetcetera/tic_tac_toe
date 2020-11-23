@@ -98,11 +98,9 @@ const clearSpaces = () => {
   resetSpaces('ordinal');
 }
 
-function resetSpaces(className) {
-  var filledSpaces = document.querySelectorAll(`.${className}`);
-  for (var i = 0; i < filledSpaces.length; i++) {
-    filledSpaces[i].className = className;
-  }
+const resetSpaces = className => {
+  const filledSpaces = document.querySelectorAll(`.${className}`);
+  filledSpaces.forEach(space => space.className = className);
 }
 
 window.onload = startAllGames;
