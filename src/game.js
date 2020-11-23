@@ -112,11 +112,8 @@ class Game {
     player.saveWinsToStorage();
   }
 
-  startFirstTurn() {
-    if (this.players[0].turn === false && this.players[1].turn === false) {
-      this.players[0].turn = true;
-    }
-
+  startFirstTurn() {    
+    !this.players[0].turn && !this.players[1].turn ? this.players[0].turn = true : this.players;
     this.assignTurnPlayer();
   }
 
