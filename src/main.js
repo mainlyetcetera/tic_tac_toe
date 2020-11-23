@@ -82,7 +82,7 @@ const resetWithTimer = () => {
   window.setTimeout(clearAll, 2500);
 }
 
-function clearAll() {
+const clearAll = () => {
   clearSpaces();
   setupGameOnDOM();
 }
