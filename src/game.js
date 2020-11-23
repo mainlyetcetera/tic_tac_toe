@@ -89,9 +89,7 @@ class Game {
   }
 
   checkForDraw() {
-    if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
-      this.result = 'This game is a draw!';
-    }
+    !Object.values(this.gameBoard).includes('') && !this.winningPlayer ? this.result = 'This game is a draw!' : this.result;
   }
 
   decideWinner() {
