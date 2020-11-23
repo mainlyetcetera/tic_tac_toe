@@ -98,12 +98,12 @@ class Game {
     this.saveWinningGameBoard(this.winningPlayer);
   }
 
-  fillSquare(boardSlot) {
-    if (this.gameBoard[boardSlot] === '') {
-      this.gameBoard[boardSlot] = this.turnPlayer.token;
-      this.checkForGameEnd();
-      this.alternateTurns();
-    }
+  fillSquare(boardSlot) {    
+    this.gameBoard[boardSlot] === '' ? (
+      this.gameBoard[boardSlot] = this.turnPlayer.token,
+      this.checkForGameEnd(),
+      this.alternateTurns()
+    ) : boardSlot;
   }
 
   saveWinningGameBoard(player) {
