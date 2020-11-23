@@ -35,10 +35,10 @@ const handlePlacePieceEffects = event => {
   disableFilledSpace(event);
 }
 
-function displayPieces(event) {
-  var gameBoard = game.gameBoard;
-  var boardSlot = event.target.id;
-  populateSpace(boardSlot, gameBoard[boardSlot]);
+const displayPieces = event => {
+  const board = game.gameBoard;
+  const slot = event.target.id;
+  populateSpace(slot, board[slot]); 
 }
 
 function displayMsg(result) {
