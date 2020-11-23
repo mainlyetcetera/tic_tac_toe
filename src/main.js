@@ -29,7 +29,7 @@ const placePiece = (id, event) => {
   ) : event;
 }
 
-function handlePlacePieceEffects(event) {
+const handlePlacePieceEffects = event => {
   displayPieces(event);
   displayMsg(game.result);
   disableFilledSpace(event);
