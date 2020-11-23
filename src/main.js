@@ -8,7 +8,7 @@ const startGame = players => {
 
 const startAllGames = () => startGame();
 
-function setupGameOnDOM() {
+const setupGameOnDOM = () => {
   game.setupGame();
   displayMsg();
   displayWinCounts();
