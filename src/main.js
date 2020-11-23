@@ -78,7 +78,7 @@ const resetGame = () => {
   game = newGame;
 }
 
-function resetWithTimer() {
+const resetWithTimer = () => {
   window.setTimeout(clearAll, 2500);
 }
 
