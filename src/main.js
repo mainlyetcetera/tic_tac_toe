@@ -87,11 +87,12 @@ const clearAll = () => {
   setupGameOnDOM();
 }
 
-function clearSpaces() {
-  for (var boardSlot in game.gameBoard) {
-    var slot = document.querySelector(`#${boardSlot}`);
-      slot.innerHTML = '';
-  }
+const clearSpaces = () => {
+  const spaces = Object.keys(game.gameBoard);
+  spaces.forEach(space => {
+    let slot = document.querySelector(`#${space}`);
+    slot.innerHTML = '';
+  });
 
   resetSpaces('cardinal');
   resetSpaces('ordinal');
