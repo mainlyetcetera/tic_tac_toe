@@ -47,7 +47,7 @@ const displayMsg = result => {
   result ? msg.innerText = result : msg.innerText = `It's Player ${num}'s turn!`;
 }
 
-function disableFilledSpace(event) {
+const disableFilledSpace = event => {
   event.target.className = `${event.target.className} filled`;
 }
 
