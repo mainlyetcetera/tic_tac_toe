@@ -1,120 +1,107 @@
-var game;
-var board = document.querySelector('.game-board');
+const board = document.querySelector('.game-board');
+let game;
 
-window.onload = startAllGames;
-board.addEventListener('click', selectSpace);
-
-function startGame(players) {
-  if (!players) {
-    game = new Game();
-  } else {
-    game = new Game(players);
-  }
-
+const startGame = players => {
+  !players ? game = new Game() : game = new Game(players);
   setupGameOnDOM();
 }
 
-function startAllGames() {
-  startGame();
-}
+const startAllGames = () => startGame();
 
-function setupGameOnDOM() {
+const setupGameOnDOM = () => {
   game.setupGame();
   displayMsg();
   displayWinCounts();
   displayPlayerIcons();
 }
 
-function selectSpace(event) {
-  placePiece(event.target.id);
+const selectSpace = event => placePiece(event.target.id, event);
+
+const placePiece = (id, event) => {
+  event.target.id && event.target.id === id ? (
+    game.fillSquare(id),
+    handlePlacePieceEffects(event)
+  ) : event;
+
+  game.winningPlayer || game.result === 'This game is a draw!' ? (
+    resetGame(),
+    resetWithTimer()
+  ) : event;
 }
 
-function placePiece(id) {
-  if (event.target.id && event.target.id === id) {
-    game.fillSquare(id);
-    handlePlacePieceEffects(event);
-  }
-
-  if (game.winningPlayer || game.result === 'This game is a draw!') {
-    resetGame();
-    resetWithTimer();
-  }
-}
-
-function handlePlacePieceEffects(event) {
+const handlePlacePieceEffects = event => {
   displayPieces(event);
   displayMsg(game.result);
   disableFilledSpace(event);
 }
 
-function displayPieces(event) {
-  var gameBoard = game.gameBoard;
-  var boardSlot = event.target.id;
-  populateSpace(boardSlot, gameBoard[boardSlot]);
+const displayPieces = event => {
+  const board = game.gameBoard;
+  const slot = event.target.id;
+  populateSpace(slot, board[slot]); 
 }
 
-function displayMsg(result) {
-  var msg = document.querySelector('.win-msg');
-  if (result) {
-    msg.innerText = result;
-  } else {
-    msg.innerText = `It's Player ${game.turnPlayer.playerNumber}'s turn!`;
-  }
+const displayMsg = result => {
+  const msg = document.querySelector('.win-msg');
+  const num = game.turnPlayer.playerNumber;
+  result ? msg.innerText = result : msg.innerText = `It's Player ${num}'s turn!`;
 }
 
-function disableFilledSpace(event) {
+const disableFilledSpace = event => {
   event.target.className = `${event.target.className} filled`;
 }
 
-function displayWinCounts() {
-  var players = game.players;
-  var player1Wins = document.querySelector('.player-1-wins');
-  var player2Wins = document.querySelector('.player-2-wins');
+const displayWinCounts = () => {
+  const players = game.players;
+  const player1Wins = document.querySelector('.player-1-wins');
+  const player2Wins = document.querySelector('.player-2-wins');
   player1Wins.innerText = `Wins: ${players[0].winCount}`;
   player2Wins.innerText = `Wins: ${players[1].winCount}`;
 }
 
-function displayPlayerIcons() {
-  var player1Icon = document.querySelector('.player-1-icon');
-  var player2Icon = document.querySelector('.player-2-icon');
+const displayPlayerIcons = () => {
+  const player1Icon = document.querySelector('.player-1-icon');
+  const player2Icon = document.querySelector('.player-2-icon');
   player1Icon.src = game.tokens[0];
   player2Icon.src = game.tokens[1];
 }
 
-function populateSpace(boardSlot, piece) {
-  var slot = document.querySelector(`#${boardSlot}`);
+const populateSpace = (boardSlot, piece) => {
+  const slot = document.querySelector(`#${boardSlot}`);
   slot.innerHTML = `
     <img src=${piece}>
-  `;
+    `;
 }
 
-function resetGame() {
-  var newGame = game.endGame();
+const resetGame = () => {
+  const newGame = game.endGame();
   game = newGame;
 }
 
-function resetWithTimer() {
+const resetWithTimer = () => {
   window.setTimeout(clearAll, 2500);
 }
 
-function clearAll() {
+const clearAll = () => {
   clearSpaces();
   setupGameOnDOM();
 }
 
-function clearSpaces() {
-  for (var boardSlot in game.gameBoard) {
-    var slot = document.querySelector(`#${boardSlot}`);
-      slot.innerHTML = '';
-  }
+const clearSpaces = () => {
+  const spaces = Object.keys(game.gameBoard);
+  spaces.forEach(space => {
+    let slot = document.querySelector(`#${space}`);
+    slot.innerHTML = '';
+  });
 
   resetSpaces('cardinal');
   resetSpaces('ordinal');
 }
 
-function resetSpaces(className) {
-  var filledSpaces = document.querySelectorAll(`.${className}`);
-  for (var i = 0; i < filledSpaces.length; i++) {
-    filledSpaces[i].className = className;
-  }
+const resetSpaces = className => {
+  const filledSpaces = document.querySelectorAll(`.${className}`);
+  filledSpaces.forEach(space => space.className = className);
 }
+
+window.onload = startAllGames;
+board.addEventListener('click', selectSpace);

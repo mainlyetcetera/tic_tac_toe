@@ -13,10 +13,8 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    var parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
-    if (parsedWinCount) {
-      this.winCount = parsedWinCount;
-    }
+    const parsedWinCount = JSON.parse(localStorage.getItem(`player${this.playerNumber}WinCount`));
+    parsedWinCount ? this.winCount = parsedWinCount : parsedWinCount;
   }
 
   takeTurn() {

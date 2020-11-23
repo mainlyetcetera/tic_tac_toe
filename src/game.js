@@ -11,19 +11,19 @@ class Game {
       s7 : '',
       s8 : '',
       s9 : ''
-    }
+    };
 
     this.players = players || [];
+    this.tokens = ['./assets/Dragon_Red_Eye_Tattoo.svg', './assets/Gat3.svg'];
     this.turnPlayer;
     this.nonTurnPlayer;
     this.result;
-    this.winningPlayer;
-    this.tokens = ['./assets/Dragon_Red_Eye_Tattoo.svg', './assets/Gat3.svg'];
+    this.winningPlayer;    
   }
 
   generatePlayers() {
-    var player1 = new Player(1, this.tokens[0]);
-    var player2 = new Player(2, this.tokens[1]);
+    const player1 = new Player(1, this.tokens[0]);
+    const player2 = new Player(2, this.tokens[1]);
     player2.id += 1;
     this.addPlayers(player1, player2);
   }
@@ -32,21 +32,16 @@ class Game {
     this.players.push(player1, player2);
   }
 
-  setupGame() {
-    if (this.players.length === 0) {
-      this.generatePlayers();
-    }
-
+  setupGame() {    
+    this.players.length === 0 ? this.generatePlayers() : this;
     this.retrieveWins();
     this.startFirstTurn();
   }
 
   retrieveWins() {
-    if (this.players.length > 0) {
-      for (var i = 0; i < this.players.length; i++) {
-        this.players[i].retrieveWinsFromStorage();
-      }
-    }
+    this.players.length > 0 ? this.players.forEach(player => {
+      player.retrieveWinsFromStorage();
+    }) : this.players;
   }
 
   alternateTurns() {
@@ -60,12 +55,7 @@ class Game {
   }
 
   assignTurnPlayer() {
-    for (var i = 0; i < this.players.length; i++) {
-      if (this.players[i].turn) {
-        this.turnPlayer = this.players[i];
-        this.nonTurnPlayer = this.players[i + 1] || this.players[i - 1];
-      }
-    }
+    this.players.forEach(player => player.turn ? this.turnPlayer = player : this.nonTurnPlayer = player);
   }
 
   checkForGameEnd() {
@@ -76,40 +66,30 @@ class Game {
   }
 
   checkForVerticalWin() {
-    var board = this.gameBoard;
-    if (board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7) {
-      this.decideWinner();
-    } else if (board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8) {
-      this.decideWinner();
-    } else if (board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9) {
-      this.decideWinner();
-    }
+    const board = this.gameBoard;
+    board.s1 !== '' && board.s1 === board.s4 && board.s1 === board.s7 ? this.decideWinner()
+      : board.s2 !== '' && board.s2 === board.s5 && board.s2 === board.s8 ? this.decideWinner()
+      : board.s3 !== '' && board.s3 === board.s6 && board.s3 === board.s9 ? this.decideWinner()
+      : board;
   }
 
   checkForHorizontalWin() {
-    var board = this.gameBoard;
-    if (board.s1 !== '' && board.s1 === board.s2 && board.s1 === board.s3) {
-      this.decideWinner();
-    } else if (board.s4 !== '' && board.s4 === board.s5 && board.s4 === board.s6) {
-      this.decideWinner();
-    } else if (board.s7 !== '' && board.s7 === board.s8 && board.s7 === board.s9) {
-      this.decideWinner();
-    }
+    const board = this.gameBoard;
+    board.s1 !== '' && board.s1 === board.s2 && board.s1 === board.s3 ? this.decideWinner()
+      : board.s4 !== '' && board.s4 === board.s5 & board.s4 === board.s6 ? this.decideWinner()
+      : board.s7 !== '' && board.s7 === board.s8 && board.s7 === board.s9 ? this.decideWinner()
+      : board;
   }
 
   checkForDiagonalWin() {
-    var board = this.gameBoard;
-    if (board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9) {
-      this.decideWinner();
-    } else if (board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7) {
-      this.decideWinner();
-    }
+    const board = this.gameBoard;
+    board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9 ? this.decideWinner()
+      : board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7 ? this.decideWinner()
+      : board;
   }
 
   checkForDraw() {
-    if (!Object.values(this.gameBoard).includes('') && !this.winningPlayer) {
-      this.result = 'This game is a draw!';
-    }
+    !Object.values(this.gameBoard).includes('') && !this.winningPlayer ? this.result = 'This game is a draw!' : this.result;
   }
 
   decideWinner() {
@@ -118,12 +98,12 @@ class Game {
     this.saveWinningGameBoard(this.winningPlayer);
   }
 
-  fillSquare(boardSlot) {
-    if (this.gameBoard[boardSlot] === '') {
-      this.gameBoard[boardSlot] = this.turnPlayer.token;
-      this.checkForGameEnd();
-      this.alternateTurns();
-    }
+  fillSquare(boardSlot) {    
+    this.gameBoard[boardSlot] === '' ? (
+      this.gameBoard[boardSlot] = this.turnPlayer.token,
+      this.checkForGameEnd(),
+      this.alternateTurns()
+    ) : boardSlot;
   }
 
   saveWinningGameBoard(player) {
@@ -132,17 +112,14 @@ class Game {
     player.saveWinsToStorage();
   }
 
-  startFirstTurn() {
-    if (this.players[0].turn === false && this.players[1].turn === false) {
-      this.players[0].turn = true;
-    }
-
+  startFirstTurn() {    
+    !this.players[0].turn && !this.players[1].turn ? this.players[0].turn = true : this.players;
     this.assignTurnPlayer();
   }
 
   endGame() {
-    var players = this.players;
-    var newGame = new Game(players);
+    const players = this.players;
+    const newGame = new Game(players);
     return newGame;
   }
   
