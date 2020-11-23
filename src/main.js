@@ -51,10 +51,10 @@ const disableFilledSpace = event => {
   event.target.className = `${event.target.className} filled`;
 }
 
-function displayWinCounts() {
-  var players = game.players;
-  var player1Wins = document.querySelector('.player-1-wins');
-  var player2Wins = document.querySelector('.player-2-wins');
+const displayWinCounts = () => {
+  const players = game.players;
+  const player1Wins = document.querySelector('.player-1-wins');
+  const player2Wins = document.querySelector('.player-2-wins');
   player1Wins.innerText = `Wins: ${players[0].winCount}`;
   player2Wins.innerText = `Wins: ${players[1].winCount}`;
 }
