@@ -83,11 +83,9 @@ class Game {
 
   checkForDiagonalWin() {
     const board = this.gameBoard;
-    if (board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9) {
-      this.decideWinner();
-    } else if (board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7) {
-      this.decideWinner();
-    }
+    board.s1 !== '' && board.s1 === board.s5 && board.s1 === board.s9 ? this.decideWinner()
+      : board.s3 !== '' && board.s3 === board.s5 && board.s3 === board.s7 ? this.decideWinner()
+      : board;
   }
 
   checkForDraw() {
